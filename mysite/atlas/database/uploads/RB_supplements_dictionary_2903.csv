@@ -1,0 +1,302 @@
+ngram,Functional,Brand
+well being,Health maintenance and well-being,
+wellbeing,Health maintenance and well-being,
+multi vitamin,Health maintenance and well-being,
+multivitamin,Health maintenance and well-being,
+cancer,Health maintenance and well-being,
+immune system,Health maintenance and well-being,
+bone health,Health maintenance and well-being,
+metabolism,Health maintenance and well-being,
+booster,Health maintenance and well-being,
+healthy,Health maintenance and well-being,
+#health,Health maintenance and well-being,
+wellness,Health maintenance and well-being,
+basic supplement,Health maintenance and well-being,
+maintain weight,Health maintenance and well-being,
+weight maintenance,Health maintenance and well-being,
+wellness,Health maintenance and well-being,
+#wellness,Health maintenance and well-being,
+well ness,Health maintenance and well-being,
+preventive,Health maintenance and well-being,
+immunity,Health maintenance and well-being,
+cutting calories,"Weight loss, Dieting, Hunger suppresants",
+burn calories,"Weight loss, Dieting, Hunger suppresants",
+excess fat,"Weight loss, Dieting, Hunger suppresants",
+excess body fat,"Weight loss, Dieting, Hunger suppresants",
+burn fat,"Weight loss, Dieting, Hunger suppresants",
+fat burn,"Weight loss, Dieting, Hunger suppresants",
+diet,"Weight loss, Dieting, Hunger suppresants",
+hunger,"Weight loss, Dieting, Hunger suppresants",
+suppressant,"Weight loss, Dieting, Hunger suppresants",
+hunger pangs,"Weight loss, Dieting, Hunger suppresants",
+appetite,"Weight loss, Dieting, Hunger suppresants",
+weightloss,"Weight loss, Dieting, Hunger suppresants",
+weight loss,"Weight loss, Dieting, Hunger suppresants",
+lowcalorie,"Weight loss, Dieting, Hunger suppresants",
+lowfat,"Weight loss, Dieting, Hunger suppresants",
+lowcarb,"Weight loss, Dieting, Hunger suppresants",
+fiber,"Weight loss, Dieting, Hunger suppresants",
+low calorie,"Weight loss, Dieting, Hunger suppresants",
+low fat,"Weight loss, Dieting, Hunger suppresants",
+low carb,"Weight loss, Dieting, Hunger suppresants",
+healthy fats,Cardiovascular,
+healthy fat,Cardiovascular,
+heart,Cardiovascular,
+healthy heart,Cardiovascular,
+good fat,Cardiovascular,
+cholesterol,Cardiovascular,
+pregnant,"Pregnancy, breastfeeding",
+baby,"Pregnancy, breastfeeding",
+pregnancy,"Pregnancy, breastfeeding",
+infant,"Pregnancy, breastfeeding",
+breastfeed,"Pregnancy, breastfeeding",
+motherfood,"Pregnancy, breastfeeding",
+babyfood,"Pregnancy, breastfeeding",
+mothersmilk,"Pregnancy, breastfeeding",
+mothermilk,"Pregnancy, breastfeeding",
+natal,"Pregnancy, breastfeeding",
+postnatal,"Pregnancy, breastfeeding",
+prenatal,"Pregnancy, breastfeeding",
+post natal,"Pregnancy, breastfeeding",
+pre natal,"Pregnancy, breastfeeding",
+babymilk,"Pregnancy, breastfeeding",
+baby milk,"Pregnancy, breastfeeding",
+breastmilk,"Pregnancy, breastfeeding",
+breast milk,"Pregnancy, breastfeeding",
+baby,"Pregnancy, breastfeeding",
+mental health,Mental health,
+stress,Mental health,
+feel-good,Mental health,
+mood,Mental health,
+sleep,Mental health,
+serotonin,Mental health,
+brain cells,Mental health,
+brain health,Mental health,
+cognitive,Mental health,
+cerebral,Mental health,
+brain performance,Mental health,
+bone joint,Joints,
+bone joints,Joints,
+healthy joints,Joints,
+flexible,Joints,
+flexibility,Joints,
+sex,Sex health (Testosterone),
+sperm,Sex health (Testosterone),
+testosterone,Sex health (Testosterone),
+muscle,Work out,
+strength,Work out,
+body build,Work out,
+body builder,Work out,
+body builders,Work out,
+body building,Work out,
+protein ,Work out,
+gym,Work out,
+#gym,Work out,
+#gymlife,Work out,
+lowfat,Work out,
+lowcalorie,Work out,
+lowcarb,Work out,
+workout,Work out,
+work-out,Work out,
+fitness,Work out,
+#fitness,Work out,
+#yoga,Work out,
+train,Work out,
+energy,"Sports Supplements (Energy, Endurance, Workout)",
+endurance,"Sports Supplements (Energy, Endurance, Workout)",
+endure,"Sports Supplements (Energy, Endurance, Workout)",
+#endure,"Sports Supplements (Energy, Endurance, Workout)",
+train,"Sports Supplements (Energy, Endurance, Workout)",
+training,"Sports Supplements (Energy, Endurance, Workout)",
+injury,"Sports Supplements (Energy, Endurance, Workout)",
+injuries,"Sports Supplements (Energy, Endurance, Workout)",
+sport,"Sports Supplements (Energy, Endurance, Workout)",
+recovery,"Sports Supplements (Energy, Endurance, Workout)",
+#recovery,"Sports Supplements (Energy, Endurance, Workout)",
+gut health,"Dyspeptics, probiotics",
+gut problem,"Dyspeptics, probiotics",
+intestine,"Dyspeptics, probiotics",
+probiotic,"Dyspeptics, probiotics",
+lactobacillus ,"Dyspeptics, probiotics",
+diarrhea,"Dyspeptics, probiotics",
+digestion ,"Dyspeptics, probiotics",
+lactose intolerance,"Dyspeptics, probiotics",
+dyspeptics,"Dyspeptics, probiotics",
+probiotics,"Dyspeptics, probiotics",
+probiotic,"Dyspeptics, probiotics",
+lactose free,"Dyspeptics, probiotics",
+gluten free,"Dyspeptics, probiotics",
+gastric upset,"Dyspeptics, probiotics",
+gastric,"Dyspeptics, probiotics",
+constipation,"Dyspeptics, probiotics",
+diabetes,Diabetes,
+blood sugar,Diabetes,
+diabetic,Diabetes,
+prediabetic,Diabetes,
+child growth,Children's health,
+children growth,Children's health,
+kid growth,Children's health,
+children's health,Children's health,
+anti aging,Beauty supplements,
+antiaging,Beauty supplements,
+beauty,Beauty supplements,
+hair,Beauty supplements,
+plant based,Botanical,
+plant protein,Botanical,
+plant,Botanical,
+herb,Botanical,
+herbal,Botanical,
+organic,Organic,
+synthetic free,Organic,
+hangover,Remedial,
+hang over,Remedial,
+alcohol,Remedial,
+marijuana,Remedial,
+addiction,Remedial,
+gamer,Gamers supplements,
+gamers,Gamers supplements,
+gaming,Gamers supplements,
+video games,Gamers supplements,
+videogames,Gamers supplements,
+games,Gamers supplements,
+joint juice,,joint juice
+the frs company,,the frs company
+corr-jensen,,corr-jensen (abcuts)
+elivarsport,,elivar
+criknutrition,,crik nutrition
+peppod,,peppod
+crik nutrition,,crik nutrition
+phytopurh,,phytopurh
+michelle’s miracle,,michelle’s miracle
+michelles miracle,,michelle’s miracle
+skoop,,skoop
+kbs research,,kbs research
+metacan,,metacan
+neutraceutical wellness,,neutraceutical wellness (nutrafol)
+nutrafol,,neutraceutical wellness (nutrafol)
+kalibratev,,kalibratev
+panacea solutions,,panacea solutions
+multiply labs,,multiply labs
+hum nutrition,,hum nutrition
+bulu box,,bulu box
+brainiac supplements,,brainiac supplements
+vitafive,,vitafive
+ritual,,ritual
+zenamins,,zenamins
+luna pharmaceuticals,,luna pharmaceuticals
+before brands,,before brands
+smartypants,,smartypants
+ponroy,,ponroy
+xymogen,,xymogen
+vitamin research products,,vitamin research products
+trovita health science,,trovita health science
+groove nutrition,,groove nutrition
+vitaperk,,vitaperk
+smartfish international,,smartfish international
+life boost,,life boost
+nectar7,,nectar7
+elysium health,,elysium health
+biophytis,,biophytis
+mindboost,,mindboost (simplesmartscience)
+sevo nutraceuticals,,sevo nutraceuticals
+nootrobox,,nootrobox
+cerebral success,,cerebral success
+pedpod,,pedpod
+neutraceutical wellness,,neutraceutical wellness
+nutrafol,,nutrafol
+profile,,profile
+de lune,,de lune
+algorigin,,algorigin
+omnimind,,omnimind
+toast supplements,,toast! supplements
+elev8 enterprises,,elev8 enterprises
+soccer supplement usa,,soccer supplement usa
+gnupharma,,gnupharma
+sundots,,sundots
+sunday morning pharmaceuticals llc,,sunday morning pharmaceuticals llc
+thin fit line,,thin fit line
+full labs,,full labs
+revive kit,,revive kit
+azoth,,azoth
+letsfood,,letsfood
+tinte,,tinte
+cannassist health,,cannassist health
+bare performance nutrition,,bare performance nutrition
+kind scientific,,kind scientific
+redee solutions,,redee solutions
+hsk genetech,,hsk genetech
+made for,,made for
+kinetic sports nutrition,,kinetic sports nutrition
+the go life,,the go life
+pinch,,pinch
+d20 strength,,d20 strength
+vitamina,,vitamina
+cilk rose water,,cilk rose water
+gilad&gilad,,gilad&gilad
+giladgilad,,giladgilad
+cara by hidoc technologies,,cara by hidoc technologies
+flexthetics,,flexthetics
+baze labs,,baze labs
+the fit body co,,the fit body co
+biowinlabs,,biowinlabs
+lgnd,,lgnd
+herohl,,herohl
+nootropics.com,,nootropics.com
+eathlete labs,,eathlete labs
+seattle gummy company,,seattle gummy company
+vitaminocean,,vitaminocean
+qol labs,,qol labs
+taperaid,,taperaid
+rippedkit,,rippedkit
+id life,,id life
+braingo,,braingo!
+82 labs,,82 labs
+memory care labs,,memory care labs
+perfect keto,,perfect keto
+equip foods,,equip foods
+legion athletics,,legion athletics
+phyteau,,phyteau
+innerathlete,,innerathlete
+thrivous,,thrivous
+fitcarte.com,,fitcarte.com
+scoopsmith,,scoopsmith
+junosan,,junosan
+prohormone warehouse,,prohormone warehouse
+zupp,,zupp
+imasulus workout,,imasulus workout
+sun genomics,,sun genomics
+phytoswiss pharma,,phytoswiss pharma
+indiana juice company,,indiana juice company
+proteinzilla nutrition,,proteinzilla nutrition
+namobrain,,namobrain
+gamer supps,,gamer supps
+pre tea,,pre-tea
+pretea,,pre-tea
+sparq tech labs,,sparq tech labs
+hapi,,hapi
+hempcann solutions,,hempcann solutions
+biotics research,,biotics research
+klaire labs,,klaire labs
+thorne research,,thorne research
+energetix,,energetix
+herb pharm,,herb pharm
+metagenics,,metagenics
+biotin,,biotin
+naturewise,,naturewise
+sugarbearhair,,sugarbearhair
+hairfluence,,hairfluence
+vitafusion,,vitafusion
+naturemade,,naturemade
+garden of life,,garden of life
+gardenoflife,,garden of life
+tru niagen,,tru niagen
+viva,,viva
+doctors best,,doctors best
+vitronc,,vitronc
+citracal,,citracal
+emergenc,,emergenc
+nutriflair,,nutriflair
+smartervitamins,,smartervitamins
+smarter vitamins,,smartervitamins
+caltrate,,caltrate
+berocca,,berocca

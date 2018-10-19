@@ -1,0 +1,145 @@
+{% extends 'atlas/header.html' %}
+
+{% block title %}ATLAS | Brand Association{% endblock %}
+
+{% load staticfiles %}
+{% csrf_token %}
+
+{% block analyses %}
+                    <li class="dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            Analytics
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a id="summary" class="dropdown-item" href="/summary/">Summary</a>
+                            <a id="clustering" class="dropdown-item" href="/clustering/">Result Clustering</a>
+                            <a id="pivot" class="dropdown-item" href="/pivot/">Data Exploration</a>
+                            <a id="association" class="dropdown-item" href="/association/">Association Map</a>
+                        </div>
+                    </li>
+                {% endblock %}
+
+{% block content %}
+
+
+    <div class="sub-header-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="sub-header">
+
+                        <div>
+                            <label>Association Map</label>
+
+                            <div class="guide">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                    View instructions
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Instruction</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <ul>
+                                                    <li>This chart shows a graphical spider web of brand association with other
+                                                        dimensions as provided in the tagging dictionary.</li>
+                                                    <li>Hover over the data points to know how strongly the brand is associated
+                                                        with another dimension.</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="dropdown">
+                            <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                Quick Links
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                <button class="dropdown-item" type="button">Action</button>
+                                <button class="dropdown-item" type="button">Another action</button>
+                                <button class="dropdown-item" type="button">Something else here</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid scroll">
+        <div class="row">
+            <div class="col-12">
+                <div class="white-bg association-map-wrapper">
+                    <div>
+                        <ul>
+                            <li><small> If no chart is rendered, then please try changing the dimension in the filter. As the process
+                                of tagging a review to a dimension is based completely on the dictionary used, not every
+                                dimension will always have conversations tagged under it.</small></li>
+                            <li><small> Not every review/conversation will talk about a brand, hence there may be many conversations
+                                tagged to 'nan' (read as Not Applicable) for the brand dimension.</small></li>
+                            <li><small> For best results, use a custom dictionary as per the domain of the conversations in the datasets.</small></li>
+                        </ul>
+                    </div>
+
+                    <article>
+                        <div><label for="dropdownMenu3">Choose dimension: </label></div>
+                        <div class="dropdown" >
+                            <button class="btn btn-outline-primary dropdown-toggle" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false" role="button">Select dimension</button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu3" id="dims">
+                                <li>Loading</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <div id="chartArea" style="display:none;">
+                        <div class ="row">
+                            <div class="col-lg-12 col-md-12" >
+                                        <div id="output" style="margin: 30px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="loading"><img src='{% static "atlas/images/icons/loading.gif"%}'></div>
+                     <div id="chartArea1" class="d-none">
+                         <div class ="row">
+                            <div class="col-lg-12 col-md-12" >
+                                <div id="chartjs-radar" >
+                                    <canvas id="myChart" ></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>Powered by LatentView</footer>
+
+{% endblock %}
+{% block imports %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+	<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+	<script type="text/javascript" src="http://mpld3.github.io/js/mpld3.v0.2.js"></script>
+    <script src="{% static 'atlas/script/url_utils.js' %}"></script>
+    <script src="{% static 'atlas/script/association.js' %}" type="text/javascript" ></script>
+
+{% endblock %}

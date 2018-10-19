@@ -1,0 +1,132 @@
+{% extends 'atlas/header.html' %}
+
+{% block title %}ATLAS | Pivot{% endblock %}
+
+{% load staticfiles %}
+{% csrf_token %}
+
+
+{% block analyses %}
+                    <li class="dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            Analytics
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a id="summary" class="dropdown-item" href="/summary/">Summary</a>
+                            <a id="clustering" class="dropdown-item" href="/clustering/">Result Clustering</a>
+                            <a id="pivot" class="dropdown-item" href="/pivot/">Data Exploration</a>
+                            <a id="association" class="dropdown-item" href="/association/">Association Map</a>
+                        </div>
+                    </li>
+                {% endblock %}
+
+{% block content %}
+
+
+
+    <div class="sub-header-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="sub-header">
+
+                        <div>
+                            <label>Data Exploration</label>
+
+                            <div class="guide">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                    View instructions
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Instruction</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <ul>
+                                                    <li>This chart can be used to visualize data from a pivot table.</li>
+                                                    <li>The most useful feature is the possibility of quickly changing the portion
+                                                        of data displayed.</li>
+                                                    <li>For example, a store owner might list monthly sales totals for a large
+                                                        number of merchandise items in a table. If the owner wanted to know
+                                                        which items sold better in a particular financial quarter, it would
+                                                        be very time-consuming to look through multiple pages of figures
+                                                        to find the information. A pivot table would allow the owner to quickly
+                                                        reorganize the data and create a summary for each item for the quarter
+                                                        in question.</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="dropdown">
+                            <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                Quick Links
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                <button class="dropdown-item" type="button">Action</button>
+                                <button class="dropdown-item" type="button">Another action</button>
+                                <button class="dropdown-item" type="button">Something else here</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid scroll">
+        <div class="row">
+            <div class="col-12">
+                <div class="white-bg association-map-wrapper">
+                    <div>
+                        <ul>
+                            <li>A review/conversation can be tagged under multiple dimensions. Hence, sum of the values might
+                                not line up with the actual totals.</li>
+                            <li> The renderer type can be selected from a choice of values (see dropdowns).</li>
+                        </ul>
+
+                        <div id="loading"><img src='{% static "atlas/images/icons/loading.gif"%}'></div>
+                        <div id="output" class="d-none"></div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>Powered by LatentView</footer>
+
+
+{% endblock %}
+{% block imports %}
+<!--<link type="text/css" rel="stylesheet" href="{% static 'atlas/styles/clustering.css' %}">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.20.0/pivot.min.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.20.0/pivot.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.3.7/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.20.0/gchart_renderers.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.20.0/tips_data.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.20.0/export_renderers.min.js"></script>
+    <script src="{% static 'atlas/script/url_utils.js' %}"></script>
+    <script src="{% static 'atlas/script/pivotgrid.js' %}" type="text/javascript" ></script>
+
+{% endblock %}

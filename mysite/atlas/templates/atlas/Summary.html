@@ -1,0 +1,348 @@
+{% extends 'atlas/header.html' %}
+
+{% block title %}ATLAS | Summary{% endblock %}
+
+{% load staticfiles %}
+{% csrf_token %}
+
+
+{% block analyses %}
+    <li class="dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            Analytics
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a id="summary" class="dropdown-item" href="/summary/">Summary</a>
+            <a id="clustering" class="dropdown-item" href="/clustering/">Result Clustering</a>
+            <a id="pivot" class="dropdown-item" href="/pivot/">Data Exploration</a>
+            <a id="association" class="dropdown-item" href="/association/">Association Map</a>
+        </div>
+    </li>
+{% endblock %}
+
+{% block content %}
+
+
+
+    <div class="sub-header-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="sub-header">
+
+                        <div>
+                            <label>Summary</label>
+
+                            <div class="guide">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                    View instructions
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Instruction</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <ul>
+                                                    <li>This page shows a direct summary of the dataset.</li>
+                                                    <li>You can use the filters to subset the data.</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="dropdown d-none">
+                            <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                Quick Links
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                <button class="dropdown-item" type="button">Action</button>
+                                <button class="dropdown-item" type="button">Another action</button>
+                                <button class="dropdown-item" type="button">Something else here</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="summary-filters-wrapper" class="d-none">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="summary-filters">
+                        <div><label for="brand1">Brand</label><div class="multi" id="brand1"></div></div>
+
+                        <div><label for="source1">Source</label><div class="multi2" id="source1"></div></div>
+
+                        <div><label for="sku1">SKU</label><div class="multi3" id="sku1"></div></div>
+
+                        <div><label>Dates</label>
+                            <div class="form">
+                                <!-- <input id="d" class="form__daterange hasDatepicker"> -->
+                                <i class="far fa-calendar-alt"></i>
+                                <input type="text" name="daterange" class="drp"/>
+                                <!--<i class="fas fa-sort-down"></i>-->
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                    <!--<div id="header_filters" style="margin:5px;">-->
+
+                        <!--<div>-->
+                            <!--<center>-->
+                                <!--<div style="padding-right:0px;" >-->
+                                    <!--<label for="brand1">Brand</label>-->
+                                    <!--<select id="brand1" class="custom-select" multiple data-actions-box="true" data-live-search="true" data-selected-text-format="count>1" data-count-selected-text= "{0} brands selected">-->
+                                        <!--<option>Loading</option>-->
+                                    <!--</select>-->
+                                <!--</div>-->
+                                <!--</center>-->
+                            <!--</div>-->
+                        <!--<div><center>-->
+
+                                <!--&lt;!&ndash;<div class="col-lg-1">Source</div>&ndash;&gt;-->
+
+                                <!--<div style="padding-right:0px;">-->
+                                    <!--<label for="source1">Source</label>-->
+                                    <!--<select id="source1" class="selectpicker" multiple data-actions-box="true" data-live-search="true" data-selected-text-format="count>1" data-count-selected-text= "{0} sources selected">-->
+                                        <!--<option>Loading</option>-->
+                                    <!--</select>-->
+                                <!--</div>-->
+                        <!--</center></div>-->
+                                <!--&lt;!&ndash;<div class="col-lg-1">SKU</div>&ndash;&gt;-->
+                        <!--<div><center>-->
+                                <!--<div >-->
+                                    <!--<label for="sku1">SKU</label>-->
+                                    <!--<select id='sku1' class="selectpicker" multiple data-actions-box="true" data-live-search="true"-->
+                                    <!--data-selected-text-format="count>1" data-count-selected-text= "{0} models selected">-->
+                                        <!--<option>Loading</option>-->
+                                    <!--</select>-->
+                                <!--</div>-->
+                            <!--</center>-->
+                        <!--</div>-->
+
+                        <!--<br/>-->
+
+                        <!--<div>-->
+                            <!--<center>-->
+                                <!--<label for="from">From<span style="margin:5px;"></span></label>-->
+                                <!--<input type="text" id="from" name="from" placeholder="mm/dd/yyyy">-->
+                                <!--<label for="to">To<span style="margin:5px;"></span></label>-->
+                                <!--<input type="text" id="to" name="to" placeholder="mm/dd/yyyy">-->
+                            <!--</center>-->
+                        <!--</div>-->
+
+                    <!--</div> &lt;!&ndash; Main filter header &ndash;&gt;-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid scroll">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <article class="value-declaration">
+                            <div></div>
+                            <div class="info-box">
+                                <span>total</span>
+                                <span id="totalbox"></span>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-md-4">
+                        <article class="value-declaration">
+                            <div class="green"></div>
+                            <div class="info-box">
+                                <span>positive</span>
+                                <span class="text-green" id="positivebox"></span>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="col-md-4">
+                        <article class="value-declaration">
+                            <div class="red"></div>
+                            <div class="info-box">
+                                <span>negative</span>
+                                <span class="text-red" id="negativebox"></span>
+                            </div>
+                        </article>
+                    </div>
+
+                </div>
+            </div>
+            <hr/>
+            <div class="col-12 myChart">
+                <div id="reviewcountChart" ></div>
+            </div>
+            <hr/>
+            <div class="col-12 myChart">
+                <div id="piechartDivContainer" >
+                    <div id="piechartDiv" class="row">
+                            <div class="col-lg-4" align="center"></div>
+
+                            <div class="col-lg-8">
+                                <!--<div class="card-body-chart">-->
+                                    <div id="myPieChart"></div>
+                                <!--</div>-->
+                            </div>
+                        </div>
+                    </div>
+
+            </div>
+            <hr/>
+            <div class="col-12" id="toppostsdiv">
+                <div class="row">
+                    <div class="col-md-6 myChart">
+                        <div class="top-post">
+                            <div>
+                                <h6>top positive</h6>
+                                <label>
+                                    <select id="pos_posts">
+                                        <option>Top 2 Posts</option>
+                                        <option>Top 5 Posts</option>
+                                        <option>Top 10 Posts</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="row" >
+                                <div id="toppos" class="list-group" style="padding:5px;width:100%;height:240px;overflow-x:auto;margin-bottom:0px;">
+                                    <div class="list-group-item" style="color:dimgrey;">
+                                      <h5 class="list-group-item-heading" style="font-weight:bold;"></h5>
+                                      <p class="list-group-item-text"></p>
+                                    </div>
+                                    <div class="list-group-item" style="color:dimgrey;">
+                                      <h5 class="list-group-item-heading"></h5>
+                                      <p class="list-group-item-text"></p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6 myChart">
+                        <div class="top-post border-red">
+                            <div>
+                                <h6>top negative </h6>
+                                <label>
+                                    <select id="neg_posts">
+                                        <option>Top 2 Posts</option>
+                                        <option>Top 5 Posts</option>
+                                        <option>Top 10 Posts</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div class="row">
+                                <div id="topneg" class="list-group" style="padding:5px;width:100%;height:240px;overflow-x:auto;margin-bottom:0px;">
+                                    <div class="list-group-item" style="color:dimgrey;">
+                                      <h5 class="list-group-item-heading" style="font-weight:bold;"></h5>
+                                      <p class="list-group-item-text"></p>
+                                    </div>
+                                    <div class="list-group-item" style="color:dimgrey;">
+                                      <h5 class="list-group-item-heading"></h5>
+                                      <p class="list-group-item-text"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class="col-12 myChart" id="brandsummaryChartDiv">
+                <div id="brandsummaryChart" style="width: 100%; "></div>
+            </div>
+            <hr/>
+            <div class="col-12 myChart d-none">
+                <div id="linechartDiv">
+                    <div id="line-chart" style="width: 100%;"></div>
+                </div>
+            </div><!--END ROW-->
+            <hr/>
+            <div class="col-12 myChart">
+                <div id="barchartDiv">
+                    <div id="bar-chart" style="width: 100%;"></div>
+                </div>
+            </div><!--END ROW-->
+            <hr/>
+            <div class="col-12" id="donut-row">
+                <div class="row" >
+                    <div class="col-md-6 myChart">
+                        <div id="donut-chart2" style="width: 100%;" ></div>
+                    </div>
+                    <div class="col-md-6 myChart">
+                        <div id="categDonutChart" style="width: 100%;"></div>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <div class="col-12 myChart">
+                <div id="wc-filters">
+                    <div><label for="dropdownMenu4">Choose source data:</label></div>
+                    <div class="dropdown" >
+                        <button class="btn btn-outline-primary dropdown-toggle" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false" role="button">Content categories</button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu4" id="wc_data">
+                            <li class="dropdown-item">Content categories</li>
+                            <li class="dropdown-item">N-grams</li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="wordcloudDiv">
+                    <div id="wordcloudChart" style="width: 100%;"></div>
+                </div>
+            </div><!--END ROW-->
+        </div>
+    </div>
+
+    <footer>Powered by LatentView</footer>
+
+{% endblock %}
+{% block imports %}
+
+
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+    <script src="https://code.highcharts.com/modules/heatmap.js"></script>
+    <script src="https://code.highcharts.com/modules/treemap.js"></script>
+    <script src="{% static 'atlas/script/app.js' %}" type="text/javascript" ></script>
+    <script src="{% static 'atlas/script/url_utils.js' %}"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+
+    <script src="{% static 'atlas/script/js/multi.select.js' %}"></script>
+    <!--<script src="{% static 'atlas/script/js/multiselect-filter.js' %}"></script>-->
+    <script src="{% static 'atlas/script/brand_summary.js' %}" type="text/javascript" ></script>
+
+<script>
+    $('.custom-file-input').on('change', function () {
+        $(this).next('.form-control-file').addClass("selected").html($(this).val());
+    })
+</script>
+
+{% endblock %}

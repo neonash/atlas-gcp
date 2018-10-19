@@ -1,0 +1,96 @@
+{% extends 'atlas/header.html' %}
+
+{% block title %}ATLAS | Queue{% endblock %}
+
+{% load staticfiles %}
+{% csrf_token %}
+
+
+{% block content %}
+
+    <div class="sub-header-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="sub-header">
+
+                        <div>
+                            <label>Queue</label>
+
+                            <div class="guide">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                    View instructions
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Instruction</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <ul>
+                                                    <li>You can see the status of your request here</li>
+                                                    <li>You can optionally download ngrams, tagged data (as per tagging dictionary selection) and content categories in your data</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                        <div class="dropdown d-none">
+                            <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                Quick Links
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                <button class="dropdown-item" type="button">Action</button>
+                                <button class="dropdown-item" type="button">Another action</button>
+                                <button class="dropdown-item" type="button">Something else here</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container-fluid scroll">
+        <div class="row">
+            <div class="col-12">
+                <div class="queue-table">
+                    <h6>
+                        <span>Note: </span>
+                        If your request is not yet listed in the queue, please try refreshing the page.
+                    </h6>
+                    <div id="jsGrid"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer>Powered by LatentView</footer>
+{% endblock %}
+{% block imports %}
+<script src="{% static 'atlas/script/queue.js' %}"></script>
+    <script src="{% static 'atlas/script/url_utils.js' %}"></script>
+    <script src="{% static 'atlas/script/vendor/jsgrid.min.js' %}"></script>
+<script>
+    $('.custom-file-input').on('change', function () {
+        $(this).next('.form-control-file').addClass("selected").html($(this).val());
+    })
+</script>
+
+{% endblock %}

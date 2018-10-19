@@ -1,0 +1,231 @@
+ngram,brand,functional,functional_pri,technical
+quality,,quality,durability,
+speakers,,,,audio
+philips,Philips,,,
+cheap,,cost,monetary,
+cheaper,,cost,monetary,
+cheapest,,cost,monetary,
+inexpensive,,cost,monetary,
+expensive,,cost,monetary,
+economical,,cost,monetary,
+sony,Sony,,,
+soft,,texture,quality,
+softer,,texture,quality,
+softest,,texture,quality,
+smooth,,texture,quality,
+smoother,,texture,quality,
+smoothest,,texture,quality,
+noise cancellation,,,,audio
+noise cancelling,,,,audio
+rough,,texture,quality,
+rougher,,texture,quality,
+roughest,,texture,quality,
+functional,,working,working,
+working,,working,working,
+condition,,working,working,
+beautiful,,look,quality,
+neat,,packaging,quality,
+neater,,packaging,quality,
+neatest,,packaging,quality,
+comfortable,,comfort,quality,
+audio,,,,audio
+jack,,,,audio
+output,,,,audio
+bass,,,,audio
+strong,,quality,durability,
+stronger,,quality,durability,
+strongest,,quality,durability,
+elasticity,,quality,durability,
+elastic,,quality,durability,
+break,,quality,durability,
+snap,,quality,durability,
+snapped,,quality,durability,
+snaps,,quality,durability,
+breaks,,quality,durability,
+broke,,quality,durability,
+cushion,,comfort,quality,
+packaging,,packaging,quality,
+package,,packaging,quality,
+packing,,packaging,quality,
+durability,,quality,durability,
+durable,,quality,durability,
+price,,cost,monetary,
+priced,,cost,monetary,
+prices,,cost,monetary,
+pricey,,cost,monetary,
+short,,comfort,quality,
+shorter,,comfort,quality,
+shortest,,comfort,quality,
+small,,comfort,quality,
+smaller,,comfort,quality,
+smallest,,comfort,quality,
+flimsy,,quality,durability,
+flimsier,,quality,durability,
+flimsiest,,quality,durability,
+works fine,,working,working,
+works right,,working,working,
+works great,,working,working,
+noise  cancelling,,working working,,audio
+length,,comfort,quality,
+lengthier,,comfort,quality,
+lengthiest,,comfort,quality,
+hearing,,working,working,
+earbuds,,comfort,quality,audio
+audiobooks,,,,audio
+audio,,,,audio
+hurt,,comfort,quality,
+hurting,,comfort,quality,
+pressure,,comfort,quality,
+pressurised,,comfort,quality,
+pressurized,,comfort,quality,
+jbl,JBL,,,
+samsung,Samsung,,,
+apple,Apple,,,
+skullcandy,SkullCandy,,,
+amazonbasics,AmazonBasics,,,
+bose,Bose,,,
+inland,Inland,,,
+tzumi,Tzumi,,,
+ausdom,Ausdom,,,
+ailihen,Ailihen,,,
+bellybuds,Bellybuds,,,
+ce tech,CE Tech,,,
+intone,Intone,,,
+jam,Jam,,,
+mpow,MPOW,,,
+orient horizon,Orient Horizon,,,
+plugfones,Plugfones,,,
+senso,Senso,,,
+sonlipo,Sonlipo,,,
+vogek,Vogek,,,
+rymemo,Rymemo,,,
+clear,,quality,working,audio
+clearer,,quality,working,audio
+clearest,,quality,working,audio
+lightweight,,comfort,quality,
+premium,,quality,quality,
+stretch,,quality,durability,
+stretches,,quality,durability,
+tight,,quality,durability,
+sennheiser,Sennheiser,,,
+seimens,Seimens,,,
+loud,,quality,working,volume
+louder,,quality,working,volume
+loudest,,quality,working,volume
+loud and clear,,quality,working,
+crank,,,,volume
+volume,,,,volume
+volume control,,,,volume
+konk,,quality,durability,
+high end,,quality,quality,
+space,,,,space
+spacious,,,,space
+vivid,,quality,quality,audio
+sound,,,,audio
+wattage,,quality,working,
+great value,,cost,monetary,
+logitech,Logitech,,,
+altec,Altec,,,
+wzk,WZK,,,
+anker,Anker,,,
+oontz,Oontz,,,
+apie,APIE,,,
+doss,Doss,,,
+soundcore,Soundcore,,,
+zoeetree,ZoeeTree,,,
+lenrue,LENRUE,,,
+cyber acoustics,Cyber Acoustics,,,
+dual electronics,Dual Electronics,,,
+zenbre,ZENBRE,,,
+edifier usa,Edifier USA,,,
+edifier,Edifier,,,
+cowin,Cowin,,,
+polk audio,Polk Audio,,,
+mancassy,Mancassy,,,
+micca,Micca,,,
+klipsch,Klipsch,,,
+xleader,XLeader,,,
+comiso,Comiso,,,
+muzili,Muzili,,,
+beats,Beats,,,
+amber,Amber,,,
+long,,comfort,quality,
+longer,,comfort,quality,
+longest,,comfort,quality,
+power,,quality,quality,output
+footprint,,comfort,quality,
+crystal clear,,quality,working,audio
+clarity,,quality,working,audio
+midtones,,color,quality,
+frequency,,quality,quality,audio
+frequencies,,quality,quality,audio
+amplifier,,quality,quality,audio
+amplification,,quality,quality,audio
+amplifying,,quality,quality,audio
+amplify,,quality,quality,audio
+tweeters,,,,audio
+crisp,,quality,quality,audio
+sound card,,,,tech parts
+pc,,,,tech parts
+dynamics,,quality,quality,audio
+sale,,cost,monetary,
+tweak,,,,tech parts
+port,,,,tech parts
+nexus,Google Nexus,,,
+plasticky,,,,sound
+fidelity,,brand loyalty,loyalty,
+improve,,quality,quality,
+heavy,,comfort,quality,
+heavier,,comfort,quality,
+height,,comfort,quality,
+slippery,,comfort,quality,
+antiskid,,comfort,quality,
+anti skid,,comfort,quality,
+listenable,,comfort,quality,audio
+dim,,quality,,quality
+muzili,Muzili,,,
+elegiant,Eligiant,,,
+jsaux,JSAUX,,,
+aomais,AOMAIS,,,
+axess,Axess,,,
+pioneer,Pioneer,,,
+demerbox,DemerBox,,,
+elac,ELAC,,,
+acoustic audio,Acoustic Audio,,,
+photive,Photive,,,
+onyx,Onyx,,,
+harman kardon,Harman Kardon,,,
+marshall stanmore,Marshall Stanmore,,,
+marshall,Marshall,,,
+veho,Veho,,,
+arvicka,Arvicka,,,
+nubwo,Nubwo,,,
+mix hero,Mix Hero,,,
+big magicbox,Big Magicbox,,,
+rockford fosgate,Rockford Fosgate,,,
+creative labs,Creative Labs,,,
+ltgem,LTGEM,,,
+yamaha,Yamaha,,,
+taotronics,TaoTronics,,,
+sound appeal,Sound Appeal,,,
+hake,Hake,,,
+co2crea,Co2Crea,,,
+asimom,ASIMOM,,,
+fit perfect,,comfort,quality,
+fits perfect,,comfort,quality,
+fitted perfect,,comfort,quality,
+cord,,,,tech parts
+cable,,,,tech parts
+clutter,,comfort,quality,
+satellite,,,,tech parts
+monitors,,,,tech parts
+knob,,,,tech parts
+computer,,,,tech parts
+surround sound,,quality,quality,audio
+panels,,,,tech parts
+new model,,,,new model
+crackling,,sound,quality,audio
+hissing,,sound,quality,audio
+popping,,sound,quality,audio
+big,,comfort,quality,
+bigger,,comfort,quality,

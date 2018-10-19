@@ -1,0 +1,129 @@
+{% load staticfiles %}
+{% csrf_token %}
+<html lang="en">
+
+<head>
+    <title>{% block title %}Atlas{% endblock %} </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="{% static 'atlas/styles/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'atlas/styles/fontawesome/web-fonts-with-css/css/fontawesome-all.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'atlas/styles/scss/style.css' %}" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+</head>
+
+<body>
+        <main>
+                <header><div id="header-hero"></div></header>
+                <template id="cube-template">
+                  <div class="cube">
+                    <div class="shadow"></div>
+                    <div class="sides">
+                      <div class="back"></div>
+                      <div class="top"></div>
+                      <div class="left"></div>
+                      <div class="front"></div>
+                      <div class="right"></div>
+                      <div class="bottom"></div>
+                    </div>
+                  </div>
+                </template>
+        </main>
+    <header class="fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <a class="navbar-brand text-uppercase" href="/">Atlas</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mx-auto invisible">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-home"></i>
+                    </a>
+                    <a class="nav-link" href="/search/">Search</a>
+                    <a class="nav-link" href="/upload/">Upload</a>
+                    <a class="nav-link" href="/queue/">Queue</a>
+                </ul>
+                <div class="header-right">
+                    <div>
+                        <i class="far fa-user"></i>
+                    </div>
+                    <div class="dropdown">
+                        <button class="dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Akshat Gupta
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="/login/">Log out</a>
+                            <!--<a class="dropdown-item" href="#">Another action</a>-->
+                            <!--<a class="dropdown-item" href="#">Something else here</a>-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="sub-header-wrapper index-sub">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="index-header">
+                            <h4>Your one stop-solution for exploratory data analysis</h4>
+                            <ul style="display:none;">
+                                <li>optionally also contain following</li>
+                                <li>upload your custom dictionaries</li>
+                                <li>tagging dictionary is as follows</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <div class="container-fluid index-margin">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="group-items">
+                            <a href="/search/" style="color:inherit;">
+                                <i class="fas fa-search"></i>
+                                <h2>Search</h2>
+                                <span>Don't know where to start? <br/>Scrape from social media/e-commerce sites</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="group-items">
+                            <a href="/upload/" style="color:inherit;">
+                                <i class="fas fa-upload"></i>
+                                <h2>Upload</h2>
+                                <span>Have your data in hand? <br/>Upload and find out what it says</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="group-items">
+                            <a href="/queue/" style="color:inherit;">
+                                <i class="fas fa-braille"></i>
+                                <h2>Queue</h2>
+                                <span>Placed a request? </br>Check if it's ready</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>Powered by LatentView</footer>
+</body>
+
+
+<script src="{% static 'atlas/script/js/jquery-3.2.1.slim.min.js' %}"></script>
+<script src="{% static 'atlas/script/js/popper.min.js' %}"></script>
+<script src="{% static 'atlas/script/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'atlas/script/js/index-animate.js' %}"></script>
+</html>

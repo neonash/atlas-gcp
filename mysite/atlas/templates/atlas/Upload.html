@@ -1,0 +1,151 @@
+{% extends 'atlas/header.html' %}
+
+{% block title %}ATLAS | Upload{% endblock %}
+
+{% load staticfiles %}
+{% csrf_token %}
+
+
+{% block content %}
+
+
+    <div class="sub-header-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="sub-header">
+                        <div>
+                            <label>Upload</label>
+
+                            <div class="guide">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                    View instructions
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered"  role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLongTitle">Instruction</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <ul>
+                                                    <li>Please upload only comma-separated or tab-separated files.</li>
+                                                    <li>Please follow the column-naming conventions as shown in the data samples before uploading files.</li>
+                                                    <li>All uploads, other than dataset, are optional. For all unchecked switches, default dictionaries will be used.</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="dropdown d-none">
+                            <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                Quick Links
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                <button class="dropdown-item" type="button">Action</button>
+                                <button class="dropdown-item" type="button">Another action</button>
+                                <button class="dropdown-item" type="button">Something else here</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid scroll">
+        <div class="row">
+            <div class="col-12">
+
+                <div class="white-bg upload-dataset">
+
+                    <div class="search-keyword">
+                        <div class="choose-file">
+                                <span><span>*</span> Upload Dataset <a class="samplelink" href="{% static 'atlas/images/guides/upload_data.jpg' %}"><small>(See default dictionary sample)</small></a></span>
+
+                            <input type="file" id="upl_data" name="upl_data" accept=".csv">
+                        </div>
+                        <div class="choose-file">
+                            <div class="toggle-switch">
+                                <div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="senti_check">
+                                        <span class="slider round"></span>
+                                    </label>
+                                    <span>Sentiment Dictionary <a href="{% static 'atlas/images/guides/upload_senti.jpg' %}" class="samplelink"><small>(See default dictionary sample)</small></a></span>
+                                </div>
+                                <div>
+                                <input type="file" id="upl_senti" name="upl_senti" accept=".csv" disabled>
+                                    </div>
+                            </div>
+                        </div>
+                        <div class="choose-file">
+                            <div class="toggle-switch">
+                                <div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="driver_check">
+                                        <span class="slider round"></span>
+                                    </label>
+                                    <span>Driver Dictionary <a href="{% static 'atlas/images/guides/upload_driver.jpg' %}" class="samplelink"><small>(See default dictionary sample)</small></a></span>
+                                </div>
+                                <div>
+                                    <input type="file" id="upl_driver" name="upl_driver" accept=".csv" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="choose-file">
+                            <div class="toggle-switch">
+                                <div>
+                                    <label class="switch">
+                                        <input type="checkbox" id="tag_check">
+                                        <span class="slider round"></span>
+                                    </label>
+                                    <span>Tagging Dictionary <a href="{% static 'atlas/images/guides/upload_tag.jpg' %}" class="samplelink"><small>(See default dictionary sample)</small></a></span>
+                                </div>
+                                <div>
+                                    <input type="file" id="upl_tag" name="upl_tag" accept=".csv" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="upload-buttons">
+                        <div>
+                            <button class="btn btn-sm btn-primary">reset</button>
+                            <button class="btn btn-sm btn-primary">upload files</button>
+                        </div>
+                        <div>
+                            <button style="display:none;"></button>
+                            <button class="btn btn-sm btn-success">start analysis >></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>Powered by LatentView</footer>
+{% endblock %}
+{% block imports %}
+
+
+<script src="{% static 'atlas/script/url_utils.js' %}"></script>
+    <script src="{% static 'atlas/script/vendor/jsgrid.min.js' %}"></script>
+    <script src="{% static 'atlas/script/upload.js' %}"></script>
+<script>
+    $('.custom-file-input').on('change', function () {
+        $(this).next('.form-control-file').addClass("selected").html($(this).val());
+    })
+</script>
+
+{% endblock %}

@@ -1,0 +1,224 @@
+{% extends 'atlas/header.html' %}
+
+{% block title %}ATLAS | Search{% endblock %}
+
+{% load staticfiles %}
+{% csrf_token %}
+
+
+{% block content %}
+
+
+    <div class="sub-header-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="sub-header">
+
+                            <div>
+                                <label>Search</label>
+
+
+
+                                <div class="guide">
+                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                                            View instructions
+                                        </button>
+    
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLongTitle">Instruction</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <img src="{% static 'atlas/images/guides/search.png' %}" style="max-width:100%;">
+                                                      <!--<ul>-->
+                                                          <!--<li>Enter the product category that you wish to search for</li>-->
+                                                          <!--<li>Select the source from where to scrape</li>-->
+                                                          <!--<li>Select the default tagging dictionary</li>-->
+                                                          <!--<li>Finally, click on Start!</li>-->
+                                                      <!--</ul>       -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                            </div>
+
+
+
+                            <div class="dropdown d-none">
+                                <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
+                                    aria-expanded="false">
+                                    Quick Links
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                    <button class="dropdown-item" type="button" >Action</button>
+                                    <button class="dropdown-item" type="button">Another action</button>
+                                    <button class="dropdown-item" type="button">Something else here</button>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+              </div>
+
+    <div class="container-fluid scroll">
+        <div class="row">
+            <div class="col-12">
+                <div class="white-bg">
+                    <div class="search-keyword">
+                        <input type="text" placeholder="Search Keyword" id="search-query" name="searchterm">
+                        <button id="search-query-submit" class="btn btn-sm btn-primary">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                    <div class="search-list">
+                        <div>
+                            <h6>Sources to extract from</h6>
+                            <ul>
+                                <li>
+                                    <div class="check">
+                                        <input type="checkbox" id="chkBoxAm" name="am" value="am" checked>
+                                        <label for="chkBoxAm">Amazon</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="check">
+                                        <input type="checkbox" id="chkBoxHd" name="hd" value="hd" disabled>
+                                        <label for="chkBoxHd">Home Depot</label>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="check">
+                                        <input type="checkbox" id="chkBoxWm" name="wm" value="wm" disabled>
+                                        <label for="chkBoxWm">Walmart</label>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h6>Default tagging dictionaries</h6>
+                            <ul>
+                                <li>
+                                    <input type="radio" id="chkBoxDictCG" name="dictopts" value="cg" checked>
+                                    <label for="chkBoxDictCG">Consumer goods</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="chkBoxDictFood" name="dictopts" value="food">
+                                    <label for="chkBoxDictFood">Food</label>
+                                </li>
+                                <li>
+                                    <input type="radio" id="chkBoxDictDS" name="dictopts" value="ds">
+                                    <label for="chkBoxDictDS">Dietary supplements</label>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="row">
+        <div style="visibility:hidden;" id="request-notification" >
+                <!--<span class="alert alert-info alert-dismissible">-->
+               Request raised succesfully
+                <!--</span>-->
+        </div>
+        <div style="visibility:hidden;" id="create-request">
+
+            We cannot find any data for the query you made, to raise a request click <span style="text-decoration: underline;"><a href="#" id="make-request" target="_self">here</a></span>.
+        </div>
+    </div>
+
+    <footer>Powered by LatentView</footer>
+
+
+{% endblock %}
+{% block imports %}
+
+<script src="{% static 'atlas/script/search.js' %}"></script>
+    <script src="{% static 'atlas/script/url_utils.js' %}"></script>
+    <!--<script src="{% static 'atlas/script/vendor/jsgrid.min.js' %}"></script>-->
+    <script type="text/javascript">
+        //var js_list = "{{dict|safe}}";
+        //var json_string = unescape({{json_list|safe|escape}});
+        //console.log(json_string);
+        //console.log(js_list);
+
+
+
+        var productList = [];
+        /*
+        ls = (Object.keys({{dict_time|safe}}));
+        ts = (Object.values({{dict_time|safe}}));
+        obj = JSON.stringify({{dict_time|safe}})
+        //console.log(obj)
+        obj = JSON.parse(obj)
+        //console.log(obj)
+        for ( i in ls ) {
+            val = obj[ls[i]]
+            console.log(val)
+        }
+        */
+
+        var createAutoCompleteListFromProductList = function(productList) {
+            var autoCompleteList = [];
+            //console.log(productList);
+            var i;
+            for (i=0; i< productList.length;i++) {
+                if(productList[i].indexOf(".csv") == -1){
+                    autoCompleteList.push(productList[i]);
+                }
+                /*else{
+                    autoCompleteList.push(productList[i].substring(0,productList[i].length - 4));
+                }*/
+            }
+            console.log(autoCompleteList);
+            $( "#search-query" ).autocomplete({
+                source: autoCompleteList
+            });
+        };
+
+        $.get('/service/product_list/').then(function (successResponse) {
+            productList = JSON.parse(successResponse);
+            autoLs = createAutoCompleteListFromProductList(productList);
+            //console.log(productList);
+
+        }, function (errorResponse) {
+            console.log("This is error response for autocomplete");
+        });
+
+        $("#search-query").change(function() {
+             console.log( "Handler for .change() called." );
+             tag = $('#search-query').val();
+             console.log('Product', tag);
+             for (i in productList){
+                if(productList[i]["name"] == tag){
+                    $("#last-refreshed").text(productList[i]["lastUpdated"])
+                    console.log(productList[i]["lastUpdated"])
+                }
+             }
+        });
+
+
+
+    </script>
+
+{% endblock %}
