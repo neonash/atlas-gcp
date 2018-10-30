@@ -25,12 +25,16 @@ urlpatterns = [
     url(r'^home/$', views.home, name='index'),
     url(r'^search/$', views.search, name='search'),
     url(r'^queue/$', views.queue, name='queue'),
+    # url(r'^sentiment/$', views.sentiment, name='sentiment'),
+    # url(r'^trigdriv/$', views.trigdriv, name='trigdriv'),
     url(r'^upload/$', views.upload, name='upload'),
     url(r'^summary/$', views.summary, name='summary'),
+    url(r'^analysis/$', views.analysis, name='analysis'),
     url(r'^topicmodeling/$', views.topicmodeling, name='topicmodeling'),
     url(r'^clustering/$', views.clustering, name='clustering'),
     url(r'^pivot/$', views.pivot, name='pivot'),
     url(r'^association/$', views.association, name='association'),
+    url(r'^discover/$', views.discover, name='discover'),
     # url(r'^compare/$', views.comparison, name='comparison'),
 
     #Login module views

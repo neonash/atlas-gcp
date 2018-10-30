@@ -34,25 +34,32 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mx-auto">
-                    <a class="nav-link" href="/">
+                    <li><a class="nav-link" href="/">
                         <i class="fas fa-home"></i>
-                    </a>
-                    <a id="search" class="nav-link" href="/search/">Search</a>
-                    <a id="upload" class="nav-link" href="/upload/">Upload</a>
-                    <a id="queue" class="nav-link" href="/queue/">Queue</a>
+                    </a></li>
+                    <li><a id="search" class="nav-link" href="/search/">Search</a></li>
+                    <li><a id="upload" class="nav-link" href="/upload/">Upload</a></li>
+                    <li><a id="queue" class="nav-link" href="/queue/">Queue</a></li>
                     {% block analyses %}{% endblock %}
                 </ul>
                 <div class="header-right">
                     <div>
                         <i class="far fa-user"></i>
                     </div>
-                    <div class="dropdown">
-                        <button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
-                            Akshat Gupta
-                        </button>
-                            <a href="/" class="dropdown-menu logout" aria-labelledby="dropdownMenu2">Log out</a>
-                    </div>
+                    <li class="dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarUserDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">Akshat Gupta</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarUserDropdown">
+                            <a id="logout" class="dropdown-item" href="/">Log out</a>
+                        </div>
+                    </li>
+                    <!--<div class="dropdown">-->
+                        <!--<button class="btn dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"-->
+                            <!--aria-expanded="false">-->
+                            <!--Akshat Gupta-->
+                        <!--</button>-->
+                            <!--<a href="/" class="dropdown-menu logout" aria-labelledby="dropdownMenu2">Log out</a>-->
+                    <!--</div>-->
                 </div>
             </div>
         </nav>
@@ -60,167 +67,6 @@
 
     {% block content %}
     {% endblock %}
-
-    <!--<div>-->
-        <!--&lt;!&ndash;BEGIN BACK TO TOP&ndash;&gt;-->
-        <!--<a id="totop" href="#"><i class="fa fa-angle-up"></i></a>-->
-        <!--&lt;!&ndash;END BACK TO TOP&ndash;&gt;-->
-
-        <!--&lt;!&ndash;BEGIN TOPBAR&ndash;&gt;-->
-        <!--<div id="header-topbar-option-demo" class="page-header-topbar">-->
-            <!--<nav id="topbar" role="navigation" style="margin-bottom: 0;" data-step="3" class="navbar navbar-default navbar-static-top">-->
-            <!--<div class="navbar-header">-->
-                <!--<a id="logo" href="/search/" class="navbar-brand"><span class="logo-text" style="color:white">ATLAS</span><span style="display: none" class="logo-text-icon">µ</span></a>-->
-                <!--<button type="button" data-toggle="collapse" data-target=".sidebar-collapse" class="navbar-toggle">-->
-                    <!--<span class="sr-only">Toggle navigation</span>-->
-                    <!--<span class="icon-bar"></span>-->
-                    <!--<span class="icon-bar"></span>-->
-                    <!--<span class="icon-bar"></span>-->
-
-                <!--</button>-->
-
-            <!--</div>-->
-            <!--<div class="topbar-main">-->
-                <!--<a id="menu-toggle" href="#" class="hidden-xs"><i class="fa fa-bars"></i></a>-->
-
-                <!--<ul class="nav navbar navbar-top-links navbar-right mbn" style="border:0px;margin-right:0px;">-->
-
-                    <!--<li class="dropdown topbar-user"><a data-hover="dropdown" href="#" class="dropdown-toggle"><img src="{% static 'atlas/images/avatar/user48.png' %}" alt="" class="img-responsive img-circle"/>&nbsp;<span class="hidden-xs">neo</span>&nbsp;<span class="caret"></span></a>-->
-                        <!--<ul class="dropdown-menu dropdown-user pull-right">-->
-                            <!--<li><a href="{% url 'login' %}"><i class="fa fa-key"></i>Log Out</a></li>-->
-                        <!--</ul>-->
-                    <!--</li>-->
-                <!--</ul>-->
-            <!--</div>&lt;!&ndash;END TOPBAR-MAIN &ndash;&gt;-->
-        <!--</nav>&lt;!&ndash;END TOPBAR&ndash;&gt;-->
-        <!--</div>-->
-        <!--&lt;!&ndash;END TOPBAR&ndash;&gt;-->
-
-        <!--<div id="wrapper">-->
-            <!--&lt;!&ndash;BEGIN SIDEBAR MENU&ndash;&gt;-->
-            <!--<nav id="sidebar" role="navigation" data-step="2" data-intro="Template has &lt;b&gt;many navigation styles&lt;/b&gt;" data-position="right" class="navbar-default navbar-static-side">-->
-                <!--<div class="sidebar-collapse menu-scroll">-->
-                    <!--<ul id="side-menu" class="nav">-->
-                        <!--<div class="clearfix"></div>-->
-                        <!--<li id = "search" class="treeview">-->
-                            <!--<a href="/">-->
-                                <!--<i class="fa fa-search fa-fw">-->
-                                    <!--<div class="icon-bg bg-orange"></div>-->
-                                <!--</i>-->
-                                <!--<span class="menu-title">Search</span>-->
-                            <!--</a>-->
-                        <!--</li>-->
-
-                        <!--<div class="clearfix"></div>-->
-<!--&lt;!&ndash;                        <li id = "analysis" class="treeview hidden">-->
-                            <!--<a href="/analysis/">-->
-                                <!--<i class="fa fa-list-alt fa-fw">-->
-                                    <!--<div class="icon-bg bg-orange"></div>-->
-                                <!--</i>-->
-                                <!--<span class="menu-title">Analysis</span>-->
-                            <!--</a>-->
-                        <!--</li>&ndash;&gt;-->
-
-                        <!--<li id="parent" class="hidden">-->
-						<!--<a href="#">-->
-							<!--<i class="fa fa-sitemap fa-fw">-->
-								<!--&lt;!&ndash;<div class="icon-bg bg-dark"></div>&ndash;&gt;-->
-							<!--</i>-->
-							<!--<span class="menu-title">Exploratory Data Analysis</span>-->
-							<!--&lt;!&ndash;<i class="fa fa-angle-left pull-right"></i>&ndash;&gt;-->
-						<!--</a>-->
-						<!--<ul class="nav-second-level" style="list-style-type:none;margin-left:5px;padding:0px;">-->
-                            <!--<li id="summary" style="padding:5px;border:0px;"><a href="/summary/" style="padding: 5px;"> Summary</a></li>-->
-							<!--<li id="analysis" style="padding:5px;border:0px;"><a href="/analysis/" style="padding: 5px;"> Analysis</a></li>-->
-							<!--&lt;!&ndash;<li id="requestTopic" style="padding:5px;border:0px;"><a href="/topicmodeling/" style="padding: 5px;"> Topic Model</a></li>&ndash;&gt;-->
-							<!--<li id="clustering" style="padding:5px;border:0px;"><a href="/clustering/" style="padding: 5px;"> Result Clustering</a></li>-->
-                            <!--<li id="pivot" style="padding:5px;border:0px;"><a href="/pivot/" style="padding: 5px;"> Data Exploration </a></li>-->
-                            <!--<li id="association" style="padding:5px;border:0px;"><a href="/association/" style="padding: 5px;"> Association Map</a></li>-->
-                            <!--&lt;!&ndash;<li id="comparison" style="padding:5px;border:0px;"><a href="/compare/" style="padding: 5px;"> Product Comparison </a></li>&ndash;&gt;-->
-                        <!--</ul>-->
-                        <!--</li>-->
-
-
-                        <!--<li id = "upload" class="treeview">-->
-                            <!--<a href="/upload/">-->
-                                <!--<i class="fa fa-upload fa-fw">-->
-                                    <!--<div class="icon-bg bg-orange"></div>-->
-                                <!--</i>-->
-                                <!--<span class="menu-title">Upload</span>-->
-                            <!--</a>-->
-                        <!--</li>-->
-                    <!--</ul>-->
-                <!--</div>&lt;!&ndash;END SIDEBAR-COLLAPSE-MENU-SCROLL&ndash;&gt;-->
-            <!--</nav>&lt;!&ndash;END SIDEBAR&ndash;&gt;-->
-            <!-- block content -->
-            <!-- endblock -->
-            <!--</div>&lt;!&ndash;END WRAPPER&ndash;&gt;-->
-    <!--</div>&lt;!&ndash;END DIV INSIDE BODY &ndash;&gt;-->
-
-    <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>-->
-    <!--<script src="{% static 'atlas/script/vendor/jquery-1.10.2.min.js' %}"></script>-->
-    <!--<script src="{% static 'atlas/script/vendor/jquery-migrate-1.2.1.min.js' %}"></script>-->
-    <!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>-->
-    <!--<script type="text/javascript" src="https://www.google.com/jsapi"></script>-->
-    <!--<script src="{% static 'atlas/script/vendor/canvas-to-blob.min.js' %}"></script>-->
-    <!--<script src="{% static 'atlas/script/vendor/sortable.min.js' %}"></script>-->
-    <!--<script src="{% static 'atlas/script/vendor/purify.min.js' %}"></script>-->
-    <!--<script src="{% static 'atlas/script/vendor/fileinput.min.js' %}"></script>-->
-
-
-    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
-
-    <!--&lt;!&ndash;Angular Scripts&ndash;&gt;-->
-    <!--<script src = "{% static 'atlas/script/vendor/angular.min.js' %}"></script>-->
-    <!--<script src = "{% static 'atlas/script/vendor/angular-route.min.js' %}"></script>-->
-    <!--<script src = "{% static 'atlas/script/vendor/angular-resource.min.js' %}"></script>-->
-
-    <!--<script src="{% static 'atlas/script/vendor/bootstrap-hover-dropdown.js' %}"></script>-->
-    <!--<script src="{% static 'atlas/script/vendor/html5shiv.js' %}"></script>-->
-    <!--<script src="{% static 'atlas/script/vendor/respond.min.js' %}"></script>-->
-    <!--<script src="{% static 'atlas/script/vendor/jquery.metisMenu.js' %}"></script>-->
-    <!--<script src="{% static 'atlas/script/vendor/jquery.slimscroll.js' %}"></script>-->
-    <!--<script src="{% static 'atlas/script/vendor/jquery.cookie.js' %}"></script>-->
-    <!--<script src="{% static 'atlas/script/vendor/icheck.min.js' %}"></script>-->
-    <!--<script src="{% static 'atlas/script/vendor/custom.min.js' %}"></script>-->
-    <!--<script src="{% static 'atlas/script/vendor/jquery.menu.js' %}"></script>-->
-    <!--<script src="{% static 'atlas/script/vendor/pace.min.js' %}"></script>-->
-    <!--<script src="{% static 'atlas/script/vendor/holder.js' %}"></script>-->
-    <!--<script src="{% static 'atlas/script/vendor/responsive-tabs.js' %}"></script>-->
-
-    <!--<script src="{% static 'atlas/script/vendor/jquery.flot.js' %}"></script>-->
-    <!--<script src="{% static 'atlas/script/vendor/jquery.flot.categories.js' %}"></script>-->
-
-
-    <!--<script src="https://code.highcharts.com/highcharts.js"></script>-->
-    <!--<script src="https://code.highcharts.com/modules/data.js"></script>-->
-    <!--<script src="https://code.highcharts.com/modules/drilldown.js"></script>-->
-
-    <!--&lt;!&ndash; Latest compiled and minified JavaScript Bootstrap selet&ndash;&gt;-->
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>-->
-
-    <!--&lt;!&ndash; (Optional) Latest compiled and minified JavaScript translation files bootstrap select &ndash;&gt;-->
-<!--&lt;!&ndash;-->
-    <!--<script src="{% static 'atlas/script/highcharts.js' %}"></script>-->
-<!--&ndash;&gt;-->
-
-    <!--<script src="{% static 'atlas/script/vendor/exporting.js' %}"></script>-->
-
-
-    <!--<script>-->
-        <!--$('#menu-toggle').on('click', function () {-->
-            <!--console.log("inside menu-toggle click event");-->
-
-        <!--});-->
-    <!--</script>-->
-    <!--<script>-->
-        <!--$.ajaxSetup({-->
-		<!--crossOrigin: true-->
-	<!--});-->
-    <!--</script>-->
-
-
-
 
     <!-- Basic UI Scripts -->
     <script src="{% static 'atlas/script/js/jquery-3.2.1.slim.min.js' %}"></script>

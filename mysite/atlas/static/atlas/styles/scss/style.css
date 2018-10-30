@@ -309,3 +309,24 @@ hr { margin: 10px 5px 10px 5px; }
 #loading { display: flex; justify-content: center; align-items:center; width:100%; }
 
 #wc-filters { display: flex; float:right; align-items: center;}
+
+.upl-status { color: green; }
+
+.dropdown:hover .dropdown-menu { display: block; max-height: 200px; opacity: 1; }
+
+.dropdown .dropdown-menu {
+    -webkit-transition: all 0.6s;
+    -moz-transition: all 0.6s;
+    -ms-transition: all 0.6s;
+    -o-transition: all 0.6s;
+    transition: all 0.6s;
+
+    max-height: 0;
+    display: block;
+    overflow: hidden;
+    opacity: 0;
+}
+
+#navbarUserDropdown { color: #FFF; }
+
+.header-right .dropdown-menu { border-radius: .25rem!Important }

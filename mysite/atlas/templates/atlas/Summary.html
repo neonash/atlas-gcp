@@ -15,8 +15,9 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a id="summary" class="dropdown-item" href="/summary/">Summary</a>
             <a id="clustering" class="dropdown-item" href="/clustering/">Result Clustering</a>
-            <a id="pivot" class="dropdown-item" href="/pivot/">Data Exploration</a>
+            <a id="pivot" class="dropdown-item" href="/pivot/">Pivot Table</a>
             <a id="association" class="dropdown-item" href="/association/">Association Map</a>
+            <a id="discover" class="dropdown-item" href="/discover/">Data Explorer</a>
         </div>
     </li>
 {% endblock %}
@@ -302,7 +303,7 @@
             </div>
             <hr/>
             <div class="col-12 myChart">
-                <div id="wc-filters">
+                <div id="wc-filters" class="d-none">
                     <div><label for="dropdownMenu4">Choose source data:</label></div>
                     <div class="dropdown" >
                         <button class="btn btn-outline-primary dropdown-toggle" id="dropdownMenu4" data-toggle="dropdown" aria-haspopup="true"

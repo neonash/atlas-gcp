@@ -16,7 +16,7 @@ Including another URLconf
 
 from django.conf.urls import url
 from atlas import views
-from atlas import summary, analysis, clustering
+from atlas import summary, analysis, clustering  # , discover
 
 
 urlpatterns = [
@@ -32,7 +32,7 @@ urlpatterns = [
     url(r'^product_list/$', views.getAutoCompleteList),
     url(r'^upload/$', views.uploadFile),
     url(r'^start/$', views.start_analysis),
-    url(r'^readdims/$', views.read_dims),
+    # url(r'^readdims/$', views.read_dims),
     url(r'^testscrape/$', views.testscrape),
 
     url(r'^summary_countRevCards/$', summary.getCountRevCardsData),
@@ -78,11 +78,14 @@ urlpatterns = [
     url(r'^clustering_data/$', clustering.getReviewClusteringData),
     url(r'^clustering_data_social/$', clustering.getSocialClusteringData),
     url(r'^clustering_data_upload/$', clustering.getUploadClusteringData),
+    url(r'^clustering_fullimport/$', clustering.getFullImport),
 
     url(r'^pivotparser/$', summary.getPivotdata),
 
     url(r'^assoc_dims/$', summary.getAssocDims),
     url(r'^assoc_levels/$', summary.getAssocLevels),
     url(r'^association/$', summary.getAssociationMapdata),
+
+    # url(r'^discover_service/$', discover.getZeppelin),
 ]
 

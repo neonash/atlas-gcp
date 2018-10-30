@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "lv-atlas",
+  "private_key_id": "97876defd5e5abb59f88b5ee38c390e4da83a1eb",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQC9Kg16EZ+CJrl4\nkcMAZ7gunYLfBblT6DiSn3V5aevwLXTRvwI6CF4e5YAwaEbTZDB+8AUl4tzj66Nz\n707DUuGa7ZgHM7GVu8QHCq8IHOxhj0b4P+yegFkYLRFJnSC8v5rs86qEKCF10Mel\n7cnHTxUegBvYMbXOi6/xOZBJp66d+tMlmqj3RQIKt/i9qT+C2okp/6MqgZCOxP0X\nbaDQFnhRlS13w60NQFCXdNb3YkpwnWa1TPEXb+0kI8g4wy6hnlFx7isFoafmIRGR\nqM7RZWtV9rWo34adkXnxyvY85oqGNL8j3r9ZijAADHZQvkCQj401NYzNX/me2qXo\n46syYIvhAgMBAAECggEASvC7iRYtPqcvyEPa4LC2h4UwQUGnw8WWkAPrSs/7QFoJ\n00ScUbhZ7VyXldXh5UJmcguNxo4jW4pRZY8zgW824KVrGsNQgdTy2qVRZWHsBdR4\n1cWhbMPFSC4mkKbWvuAbtO7tqVCqvN2bErHrQ/IhGEXBgjtjXvH5IJRhBMURCRWU\nrN5S77MfkG2VMM+BuSv0yeTK2/x/SvCTT7G9igrN4w3Ypr7t1LPGYQxtMuMQOoxB\nPN1eEk4QxdPi2qv8vjqK42pYX+8hm6jSBur/h9QxHg37aXJnlhpHCu7q1YRI0Nsf\nr8ZM7O+RDngJSzII+LW9ZsLgC4lLDa+3wQTUahRQLwKBgQDeSyaaBA/YjYRKjuiW\n2xiTeK9MdZ2gVPwJyVzKqSd7WJe5lm8PxCDMMxYbGBL1Q3trYQpDsCkHNAcU7Hdr\nxuLNZNrKtnSFnNtb8BmsGG13/nn33y81GVSxIrwaKeixwudjUzIf8KE8CMMBVPG9\nxBkF2NerLHRaB8sgZYi79E9uNwKBgQDZ2OkHij4T7LyYWoiwLoCpjOAa1DtW7ZVS\nLNeNdh7nTT8QYIxfNfMF623kJHISwh4QhGBOqXX4E5Jv0hFs4gu4hsFujeGB4YVt\niZHLHP24HD4U16rG2vjkWIB5SFkIm23P+gwGqpFY1VfOO+aAD2P8ZiFc1IJuX8Xg\nuH1qZQqKpwKBgQDM33RPRGkaS6teUAG7b2hiGjtt+4RwDYNQvb4Apg/WVZtYl3X6\nkOcta/P2uqRWWYB5QbGFGullUyUnupyBv4auiEJBzBDuR9fADzSJ8OWLTwU4VwEa\nLiNpMjss3e0xUBGT8ExlNZBUVTrskk5OeFobknOKtmjxxPcH/6walhtS1wKBgQDP\n4A0VldQA3VFlrFZskCNUJ0qeL1DkdVecj4+svD9nBi4caZTpMajSSEKXhjOYNMXN\nixP/W/NnIv4EWBcqqFT44xXncdnzPwk8ah7GC8cMDV8sMlQS51bDRrRphyD2dqKF\n6BvbrJ1/gC0GbeBY6NbHPYmudFZ2DkvbURDUGtDBVwKBgQCP+Eo+09yL9odb+jif\nCacGFL2ecz0q8jDJeYTZfRhg/ThC6SPQ9Zs19OUZJXPntQB1q+kZ+w1LumvvGC0t\n4KMCm1ZBTo9lvscaXCSM5Q0k2q3NeDYvun3DTfu/h+KNhgd2EzquUVVW5++7ErPb\n4ZB3YeCsnAUaSDR7X+/MatfBHw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "lv-atlas@appspot.gserviceaccount.com",
+  "client_id": "118114134981804278732",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/lv-atlas%40appspot.gserviceaccount.com"
+}

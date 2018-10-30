@@ -18,20 +18,23 @@ from atlas.config import dbConfig
 import pandas as pd
 from django.db import connection
 from django.db.models import F
-#import csv
+import csv
 import os
 from collections import OrderedDict
 from atlas.models import Requests, Product, Review, Analysis, Uploads, UploadAnalyses, DimenMap, TagDicts, TagDictsUpl, Social, SocialAnalyses, TaggedData, TaggedDataUpl, TaggedDataRev, AggTaggedData, AggTaggedDataUpl, AggTaggedDataRev, ContentCategoryRev, ContentCategoryUpl, ContentCategorySoc
 import re
-# from django.core.serializers.json import DjangoJSONEncoder
-#
-# from google.cloud import language
-# from google.cloud.language import enums
-# from google.cloud.language import types
-# import six
-# from nltk.corpus import stopwords
-# from nltk.tokenize import word_tokenize
+import requests
+from django.core.serializers.json import DjangoJSONEncoder
+
+from google.cloud import language
+from google.cloud.language import enums
+from google.cloud.language import types
+import six
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+
 import sys
+
 
 reload(sys)
 sys.setdefaultencoding('utf8')
@@ -56,8 +59,17 @@ def queue(request):
     return render(request, 'atlas/Queue.html')
 
 
+# def sentiment(request):
+#     return render(request, 'atlas/Sentiment.html')
+
+
 def summary(request):
     return render(request, 'atlas/Summary.html')
+    # return render(request, 'atlas/SummaryAnalysis.html')
+
+
+def analysis(request):
+    return render(request, 'atlas/Analysis.html')
 
 
 def topicmodeling(request):
@@ -95,6 +107,11 @@ def clustering(request):
         return render(request, 'atlas/Clustering.html', {'product1': str("atlas/includes/error.html")})
 
 
+# def requests(request):
+#     #query = request.GET['request']
+#     return render(request, 'atlas/Requests.html')
+
+
 def pivot(request):
     #query = request.GET['request']
     return render(request, 'atlas/Pivot.html')
@@ -104,6 +121,27 @@ def association(request):
     #query = request.GET['request']
     return render(request, 'atlas/Association.html')
 
+
+def discover(request):
+    #query = request.GET['request']
+    print("inside views.py discover()")
+    # def ok_to_load_in_a_frame(request):
+    #     return HttpResponse("This page is safe to load in a frame on any site.")
+
+    # r = requests.get('http://172.16.15.4:8080/#/notebook/2DTP82UXX')
+    # print("this is response: ", r)
+    return render(request, 'atlas/Discover.html', {'zep': str('atlas/Zeppelin.html')})
+    # return render(request, 'atlas/Discover.html')  # , {'zeppelin_url': 'http://172.16.15.4:8080/#/notebook/2DTP82UXX'})
+
+
+#
+# def comparison(request):
+#     #query = request.GET['request']
+#     return render(request, 'atlas/Comparison.html')
+#
+#
+# def trigdriv(request):
+#     return render(request, 'atlas/Trigger_Driver.html')
 
 def upload(request):
     return render(request, 'atlas/Upload.html')
@@ -145,6 +183,20 @@ def searchQuery(request):
         return HttpResponse("Product you are looking for does not exist", status=404)
     #return HttpResponse("returning from searchQuery", status=200)
 
+'''
+def searchQuery(request):
+    query = request.GET['query']
+    # print(static_data.products[query])
+
+    if query in static_data.products:
+        return HttpResponse(json.dumps(static_data.products[query]), status=200)
+    else:
+        # error = Error("product you are looking for does not exist", 404)
+        # print(error)
+        print("error")
+        return HttpResponse("Product you are looking for does not exist", status=404)
+'''
+
 
 @csrf_exempt
 def uploadFile(request):
@@ -168,14 +220,14 @@ def start_analysis(self):
     return HttpResponse(json.dumps([responseObject]), status=responseObject["status"])
 
 
-def read_dims(request):
-    print("inside readdims")
-    #print (request)
-    #print dir(request)
-    responseObject = product_service.read_dims(request)  # response object contains table_data
-    #print(responseObject)
-    #print(type(responseObject))
-    return HttpResponse(json.dumps(responseObject), status=200)
+# def read_dims(request):
+#     print("inside readdims")
+#     #print (request)
+#     #print dir(request)
+#     responseObject = product_service.read_dims(request)  # response object contains table_data
+#     #print(responseObject)
+#     #print(type(responseObject))
+#     return HttpResponse(json.dumps(responseObject), status=200)
 
 
 def addProduct(request):
@@ -452,30 +504,46 @@ def download_contcat_data(request):
             has_csv = True
             query1 = query1[:len(query1) - 4]
 
-        rev_qs = None
-        cc_data = None
-        rid_list = []
-        rtext_list = []
         if not has_csv:
-            rev_qs = Review.objects.filter(pid_id__pCategory=query1).values_list('rid','rText')
-            cc_data = ContentCategoryRev.objects.filter(rid_id__in=rid_list).values_list('rid_id', 'category',
+            rev_qs = Review.objects.filter(pid_id__pCategory=query1).values('rid','rText')
+            rid_list = [r['rid'] for r in rev_qs]
+            cc_data = ContentCategoryRev.objects.filter(rid_id__in=rid_list).values('rid_id', 'category_ter',
                                                                                          'confidence')
+            print("CC data in Review")
         else:
-            rev_qs = Uploads.objects.filter(pCategory=query1).values_list('rid','rText')
+            rev_qs = Uploads.objects.filter(pCategory=query1).values('rid','rText')
             if len(rev_qs) == 0:
-                rev_qs = Social.objects.filter(dataset_filename=query1).values_list('rid', 'rText')
-                cc_data = ContentCategorySoc.objects.filter(rid_id__in=rid_list).values_list('rid_id', 'category',
+                rev_qs = Social.objects.filter(dataset_filename=query1).values('rid', 'rText')
+                print(rev_qs)
+                rid_list = [r['rid'] for r in rev_qs]
+                print(rid_list)
+                cc_data = ContentCategorySoc.objects.filter(rid_id__in=rid_list).values('rid_id', 'category_ter',
                                                                                              'confidence')
+                print(cc_data)
+                print("CC data in Social")
             else:
-                cc_data = ContentCategoryUpl.objects.filter(rid_id__in=rid_list).values_list('rid_id', 'category',
+                rid_list = [r['rid'] for r in rev_qs]
+                cc_data = ContentCategoryUpl.objects.filter(rid_id__in=rid_list).values('rid_id', 'category_ter',
                                                                                              'confidence')
+                print("CC data in Uploads")
 
         df = pd.DataFrame.from_records(cc_data)
 
-        df['rText'] = ""
+        text_list = []
 
-        for d in df:
-            d['rText'] = next(rtext for (rid, rtext) in rev_qs if rid == d['rid_id'])
+        for idx, row in df.iterrows():
+            print(row)
+            for r in rev_qs:
+                # print(r['rid'], d[1])  # tuple index 0 is index value of df (inspite of giving index)
+                if r['rid'] == row['rid_id']:
+                    text_list.append(r['rText'])
+                    break
+                    # df['rText'] = next([rtext for (rid, rtext) in rev_qs if rid == d['rid_id']])
+        print("************")
+        print(df)
+        print(text_list)
+        print(rid_list)
+        df['rText'] = text_list
 
         if not len(df) == 0:
             print(df)

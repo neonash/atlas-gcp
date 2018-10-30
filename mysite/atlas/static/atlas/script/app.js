@@ -1,6 +1,6 @@
 (function() {
   var app = angular.module('gemStore', ['ngRoute']);
-  console.log("Inside appjs")
+  //console.log("Inside appjs")
 
   app.controller('StoreController', function(){
     this.products = gems;

@@ -17,10 +17,9 @@
                             $.ajax({
                                 type: "POST",
                                 url: "/service/upload/",
-                                data: {"upl_type": "upl_senti", "filename": myFile.name, "filedata": fr.result},
+                                data: {'upl_type': 'upl_senti', "filename": myFile.name, 'filedata': fr.result},
                                 success: function (response) {
-                                    console.log("Sentiment File uploaded");
-                                    $('.choose-file:nth-child(2) span:last-child').removeClass("d-none");
+                                    console.log("File uploaded");
                                 },
                                 failure: function (response) {
                                     alert("failed");
@@ -43,10 +42,9 @@
                             $.ajax({
                                 type: "POST",
                                 url: "/service/upload/",
-                                data: {"upl_type": "upl_driver", "filename": myFile.name, "filedata": fr.result},
+                                data: {'upl_type': 'upl_driver', "filename": myFile.name, 'filedata': fr.result},
                                 success: function (response) {
-                                    console.log("Driver File uploaded");
-                                    $('.choose-file:nth-child(3) span:last-child').removeClass("d-none");
+                                    console.log("File uploaded");
                                 },
                                 failure: function (response) {
                                     alert("failed");
@@ -69,10 +67,9 @@
                             $.ajax({
                                 type: "POST",
                                 url: "/service/upload/",
-                                data: {"upl_type": "upl_tag", "filename": myFile.name, "filedata": fr.result},
+                                data: {'upl_type': 'upl_tag', "filename": myFile.name, 'filedata': fr.result},
                                 success: function (response) {
-                                    console.log("Tagging File uploaded");
-                                    $('.choose-file:last-of-type span:last-child').removeClass("d-none");
+                                    console.log("File uploaded");
                                 },
                                 failure: function (response) {
                                     alert("failed");
@@ -80,22 +77,16 @@
                             });
 
                         }
-                        try{
-                            fr.readAsText( myFile );
-                            //             console.log(fr.result);
-                           }
-                        catch(err){ alert("Unexpected error while uploading files! Probably a file to be uploaded is not selected yet. Please check and try again."); }
+                        fr.readAsText( myFile );
+            //             console.log(fr.result);
                     }
                 });
-            }catch(err){
-                console.log(err);
-                alert("Unexpected error while uploading files! Please try again.");
-            }
+            }catch(err){console.log(err);}
 
 
             // to upload dataset
             var myFile = $('#upl_data').prop('files')[0];
-//            console.log(myFile.name);
+            console.log(myFile.name);
 
             var fr = new FileReader();
             fr.onload = function(){
@@ -103,10 +94,9 @@
                 $.ajax({
                     type: "POST",
                     url: "/service/upload/",
-                    data: {"upl_type": "upl_data", "filename": myFile.name, "filedata": fr.result},
+                    data: {'upl_type': 'upl_data', "filename": myFile.name, 'filedata': fr.result},
                     success: function (response) {
-                        console.log("Data File uploaded");
-                        $('.choose-file:first-of-type span:last-child').removeClass("d-none");
+                        console.log("File uploaded");
                     },
                     failure: function (response) {
                         alert("failed");

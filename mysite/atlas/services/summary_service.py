@@ -129,7 +129,6 @@ def getTopposPosts(kw, brand, source, sku, fromDate, toDate, topn):
     source = source1
 
     p_flag = False  # set true if no records tagged positive
-    pos_data = None
 
     if fromDate == "" or toDate == "":
 
@@ -148,6 +147,11 @@ def getTopposPosts(kw, brand, source, sku, fromDate, toDate, topn):
         if not p_flag:  # if there are positive reviews
             pos_data = Review.objects.filter(rid__in=top_pos_ids1).only('rTitle', 'rText')
             #print(pos_data)
+            data1 = serializers.serialize("json", pos_data)
+            data_json = json.dumps(data1, cls=DjangoJSONEncoder)
+            return data_json
+        else:
+            return
 
     else:
 
@@ -167,9 +171,11 @@ def getTopposPosts(kw, brand, source, sku, fromDate, toDate, topn):
             pos_data = Review.objects.filter(rid__in=top_pos_ids1).only('rTitle', 'rText')
             #print(pos_data)
 
-    data1 = serializers.serialize("json", pos_data)
-    data_json = json.dumps(data1, cls=DjangoJSONEncoder)
-    return data_json
+            data1 = serializers.serialize("json", pos_data)
+            data_json = json.dumps(data1, cls=DjangoJSONEncoder)
+            return data_json
+        else:
+            return
 
 
 def getTopposPostsOverall(kw, topn):
@@ -219,7 +225,7 @@ def getTopnegPosts(kw, brand, source, sku, fromDate, toDate, topn):
     source = source1
 
     n_flag = False  # set true if no records tagged positive
-    neg_data = None
+
     if fromDate == "" or toDate == "":
 
         top_neg_ids = Analysis.objects \
@@ -237,6 +243,11 @@ def getTopnegPosts(kw, brand, source, sku, fromDate, toDate, topn):
         if not n_flag:
             neg_data = Review.objects.filter(rid__in=top_neg_ids1).only('rTitle', 'rText')
             # print(neg_data)
+            data1 = serializers.serialize("json", neg_data)
+            data_json = json.dumps(data1, cls=DjangoJSONEncoder)
+            return data_json
+        else:
+            return
 
     else:
 
@@ -256,9 +267,11 @@ def getTopnegPosts(kw, brand, source, sku, fromDate, toDate, topn):
             neg_data = Review.objects.filter(rid__in=top_neg_ids1).only('rTitle', 'rText')
             # print(neg_data)
 
-    data1 = serializers.serialize("json", neg_data)
-    data_json = json.dumps(data1, cls=DjangoJSONEncoder)
-    return data_json
+            data1 = serializers.serialize("json", neg_data)
+            data_json = json.dumps(data1, cls=DjangoJSONEncoder)
+            return data_json
+        else:
+            return
 
 
 def getTopnegPostsOverall(kw, topn):
@@ -292,8 +305,6 @@ def getTopnegPostsOverall(kw, topn):
         data1 = serializers.serialize("json", neg_data)
         data_json = json.dumps(data1, cls=DjangoJSONEncoder)
         return data_json
-
-
 
 
 def getTopposneg(kw, brand, source, sku, fromDate, toDate):
@@ -380,18 +391,25 @@ def getTopposneg(kw, brand, source, sku, fromDate, toDate):
 
     if not p_flag and not n_flag:
         data = pos_data.union(neg_data)
+        data1 = serializers.serialize("json", data)
+        data_json = json.dumps(data1, cls=DjangoJSONEncoder)
+        return data_json
     elif not p_flag and n_flag:
         data = pos_data
+        data1 = serializers.serialize("json", data)
+        data_json = json.dumps(data1, cls=DjangoJSONEncoder)
+        return data_json
     elif p_flag and not n_flag:
         data = neg_data
+        data1 = serializers.serialize("json", data)
+        data_json = json.dumps(data1, cls=DjangoJSONEncoder)
+        return data_json
     else:
         print("No data to show!")
-        data = [0]
-    #print(data)
-
-    data1 = serializers.serialize("json", data)
-    data_json = json.dumps(data1, cls=DjangoJSONEncoder)
-    return data_json
+        data = []
+        data1 = serializers.serialize("json", data)
+        data_json = json.dumps(data1, cls=DjangoJSONEncoder)
+        return data_json
 
 
 class CA(object):
@@ -550,11 +568,11 @@ def getPivotcontent(kw):
         data = AggTaggedData.objects.filter(dataset_filename=kw).values('rid', 'aid_id__rDate2', 'aid_id__dt', 'aid_id__mth', 'aid_id__year', 'dim1', 'dim2','dim3', 'dim4', 'dim5', 'dim6', 'dim7',
                                                                         'dim8', 'dim9', 'dim10', 'dim11', 'dim12','dim13',
                                                                         'dim14', 'dim15', 'aid_id__rRating', 'aid_id__rText', 'aid_id__rTitle', 'aid_id__rUser')
-        data_rids = AggTaggedData.objects.filter(dataset_filename=kw).values_list('rid_id', flat=True)
+        data_rids = AggTaggedData.objects.filter(dataset_filename=kw).values_list('rid', flat=True)
         cc_data = ContentCategorySoc.objects.filter(rid_id__in=data_rids).values()
 
         if len(data) == 0:
-            data = AggTaggedDataUpl.objects.filter(dataset_filename=kw).values('rid', 'rid_id__rDate2', 'rid_id__dt', 'rid_id__mth', 'rid_id__year', 'dim1', 'dim2', 'dim3', 'dim4', 'dim5',
+            data = AggTaggedDataUpl.objects.filter(dataset_filename=kw).values('rid_id', 'rid_id__rDate2', 'rid_id__dt', 'rid_id__mth', 'rid_id__year', 'dim1', 'dim2', 'dim3', 'dim4', 'dim5',
                                                                                 'dim6',
                                                                                 'dim7', 'dim8', 'dim9', 'dim10',
                                                                                 'dim11', 'dim12',
@@ -567,10 +585,10 @@ def getPivotcontent(kw):
             print("Data in AggTaggedData")
 
     else:
-        data = AggTaggedDataRev.objects.filter(pCategory=kw).values('rid', 'rid_id__rDate2', 'rid_id__dt', 'rid_id__mth', 'rid_id__year', 'dim1', 'dim2', 'dim3', 'dim4', 'dim5', 'dim6',
+        data = AggTaggedDataRev.objects.filter(pCategory=kw).values('rid_id', 'rid_id__rDate2', 'rid_id__dt', 'rid_id__mth', 'rid_id__year', 'dim1', 'dim2', 'dim3', 'dim4', 'dim5', 'dim6',
                                                                      'dim7','dim8', 'dim9', 'dim10', 'dim11', 'dim12', 'dim13',
                                                                      'dim14', 'dim15', 'rid_id__rRating', 'rid_id__rText', 'rid_id__rTitle', 'rid_id__rUser')
-        data_rids = AggTaggedDataRev.objects.filter(pCategory=kw).values_list('rid',flat=True)
+        data_rids = AggTaggedDataRev.objects.filter(pCategory=kw).values_list('rid_id',flat=True)
         cc_qs = ContentCategoryRev.objects.filter(rid_id__in=data_rids).values('rid_id', 'category_pri', 'category_sec', 'category_ter')
         # print(cc_qs)
         # print([c for c in cc_qs])
@@ -609,11 +627,11 @@ def getPivotcontent(kw):
         for i in all_cols:
             # print i
             # print data1[i]
-            if i not in ['rid', 'rid_id__rDate2', 'rid_id__dt', 'rid_id__rRating', 'rid_id__rText', 'rid_id__rTitle',
+            if i not in ['rid', 'rid_id', 'rid_id__rDate2', 'rid_id__dt', 'rid_id__rRating', 'rid_id__rText', 'rid_id__rTitle',
                          'rid_id__rUser', 'rid_id__mth', 'rid_id__year', 'aid_id__rDate2', 'aid_id__dt', 'aid_id__mth',
                          'aid_id__year']:
                 d[str(data1[i]).title()] = d.pop(i)
-            elif i == 'rid':
+            elif i in ['rid', 'rid_id']:
                 d['Review ID'] = d.pop(i)
             elif i == 'rid_id__rRating' or i == 'aid_id__rRating':
                 d['Rating'] = d.pop(i)
@@ -1767,87 +1785,98 @@ def getCategChartRev(kw, brand, source, sku, fromDate, toDate):
     #    ]
     # }
 
-    if fromDate == "" and toDate == "":
-        rev_ids = Review.objects.filter(pid__pCategory=kw, pid__pBrand__in=brand, pid__siteCode__in=source, pid__pModel__in=sku).values_list('rid', flat=True)
-        cat_pri_qs = ContentCategoryRev.objects.filter(rid_id__in=rev_ids).values('category_pri').annotate(cat_count=Count('category_pri'))
+
+    try:
+        if fromDate == "" and toDate == "":
+            rev_ids = Review.objects.filter(pid__pCategory=kw, pid__pBrand__in=brand, pid__siteCode__in=source, pid__pModel__in=sku).values_list('rid', flat=True)
+            cat_pri_qs = ContentCategoryRev.objects.filter(rid_id__in=rev_ids).values('category_pri').annotate(cat_count=Count('category_pri'))
+            # print("cat_pri_qs", cat_pri_qs)
+
+        else:
+            rev_ids = Review.objects.filter(pid__pCategory=kw, pid__pBrand__in=brand, pid__siteCode__in=source,pid__pModel__in=sku, rDate2__range=[fromDate,toDate]).values_list('rid', flat=True)
+            cat_pri_qs = ContentCategoryRev.objects.filter(rid_id__in=rev_ids).values('category_pri').annotate(cat_count=Count('category_pri'))
+            # print("cat_pri_qs",cat_pri_qs)
+            #cat_pri = list(set(ContentCategoryRev.objects.filter(rid_id__in=rev_ids).values_list('category_pri',flat=True)))
+
         # print("cat_pri_qs", cat_pri_qs)
+        # print("cat_sec_qs", cat_sec_qs)
 
-    else:
-        rev_ids = Review.objects.filter(pid__pCategory=kw, pid__pBrand__in=brand, pid__siteCode__in=source,pid__pModel__in=sku, rDate2__range=[fromDate,toDate]).values_list('rid', flat=True)
-        cat_pri_qs = ContentCategoryRev.objects.filter(rid_id__in=rev_ids).values('category_pri').annotate(cat_count=Count('category_pri'))
-        # print("cat_pri_qs",cat_pri_qs)
-        #cat_pri = list(set(ContentCategoryRev.objects.filter(rid_id__in=rev_ids).values_list('category_pri',flat=True)))
+        series_data_dict = {}
 
-    # print("cat_pri_qs", cat_pri_qs)
-    # print("cat_sec_qs", cat_sec_qs)
+        cat_pri_count_total = sum([c['cat_count'] for c in cat_pri_qs])
+        # print("cat_pri_count_total",cat_pri_count_total)
+        # To populate series []
+        for p in cat_pri_qs:
+            print("inside 1st loop")
+            series_data_dict["name"] = p['category_pri']
+            series_data_dict["y"] = float(p['cat_count'])/float(cat_pri_count_total) * 100
+            print(p['cat_count'],cat_pri_count_total)
+            series_data_dict["drilldown"] = str(p['category_pri']).split('/')[1].lower()
+            series_data.append(series_data_dict.copy())
 
-    series_data_dict = {}
-
-    cat_pri_count_total = sum([c['cat_count'] for c in cat_pri_qs])
-    # print("cat_pri_count_total",cat_pri_count_total)
-    # To populate series []
-    for p in cat_pri_qs:
-        series_data_dict["name"] = p['category_pri']
-        series_data_dict["y"] = float(p['cat_count'])/float(cat_pri_count_total) * 100
-        print(p['cat_count'],cat_pri_count_total)
-        series_data_dict["drilldown"] = str(p['category_pri']).split('/')[1].lower()
-        series_data.append(series_data_dict.copy())
-
-    # To populate drilldown {} - first drilldown
-    for p in cat_pri_qs:
-        drilldown_series_dict = dict()
-        drilldown_series_dict["name"] = p['category_pri']
-        drilldown_series_dict["id"] = str(p['category_pri']).split('/')[1].lower()
-        drilldown_series_dict["data"] = []
-
-        cat_sec_qs = ContentCategoryRev.objects.filter(category_pri=p['category_pri'],rid_id__in=rev_ids).values('category_sec').annotate(cat_count=Count('category_sec'))
-        for s in cat_sec_qs:
-            #  To add second-level drilldown ###
-            drilldown_series_dict_data = dict()
-            if len(str(s['category_sec']).split('/')) == 3:
-                drilldown_series_dict_data["name"] = "/" + str(s['category_sec']).split('/')[2]
-                drilldown_series_dict_data["y"] = float(s['cat_count']) / float(p['cat_count']) * 100
-                drilldown_series_dict_data["drilldown"] = drilldown_series_dict["id"] + '-' + str(s['category_sec']).split('/')[2].lower()
-
-                # drilldown_series_dict["data"].append(drilldown_series_dict_data.copy())
-            else:
-                drilldown_series_dict_data["name"] = "/Others"
-                drilldown_series_dict_data["y"] = float(s['cat_count']) / float(p['cat_count']) * 100
-                drilldown_series_dict_data["drilldown"] = None
-
-            drilldown_series_dict["data"].append(drilldown_series_dict_data.copy())
-
-        drilldown_series_data.append(drilldown_series_dict.copy())
-
-    # To populate drilldown {} - second drilldown
-    for p in cat_pri_qs:
-        cat_sec_qs = ContentCategoryRev.objects.filter(category_pri=p['category_pri'],rid_id__in=rev_ids).values('category_sec').annotate(
-            cat_count=Count('category_sec'))
-        for s in cat_sec_qs:
+        # To populate drilldown {} - first drilldown
+        for p in cat_pri_qs:
+            print("inside 2nd loop")
             drilldown_series_dict = dict()
-            if len(str(s['category_sec']).split('/')) == 3:
-                drilldown_series_dict["name"] = s['category_sec']
-                drilldown_series_dict["id"] = str(p['category_pri']).split('/')[1].lower() + '-' + str(s['category_sec']).split('/')[2].lower()
-                drilldown_series_dict["data"] = []
+            drilldown_series_dict["name"] = p['category_pri']
+            drilldown_series_dict["id"] = str(p['category_pri']).split('/')[1].lower()
+            drilldown_series_dict["data"] = []
 
-                cat_ter_qs = ContentCategoryRev.objects.filter(category_pri=p['category_pri'],category_sec=s['category_sec'],
-                                                               rid_id__in=rev_ids).values('category_ter').annotate(
-                                                               cat_count=Count('category_ter'))
-                if len(cat_ter_qs) > 0:
-                    for t in cat_ter_qs:
-                        if len(str(t['category_ter']).split('/')) == 4:
-                            drilldown_series_dict['data'].append(['/' + str(t['category_ter']).split('/')[3], float(t['cat_count'])/float(s['cat_count'])*100])
-                        else:
-                            drilldown_series_dict['data'].append(['/Others', float(t['cat_count']) / float(s['cat_count']) * 100])
+            cat_sec_qs = ContentCategoryRev.objects.filter(category_pri=p['category_pri'],rid_id__in=rev_ids).values('category_sec').annotate(cat_count=Count('category_sec'))
+            for s in cat_sec_qs:
+                #  To add second-level drilldown ###
+                drilldown_series_dict_data = dict()
+                if len(str(s['category_sec']).split('/')) == 3:
+                    drilldown_series_dict_data["name"] = "/" + str(s['category_sec']).split('/')[2]
+                    drilldown_series_dict_data["y"] = float(s['cat_count']) / float(p['cat_count']) * 100
+                    drilldown_series_dict_data["drilldown"] = drilldown_series_dict["id"] + '-' + str(s['category_sec']).split('/')[2].lower()
+
+                    # drilldown_series_dict["data"].append(drilldown_series_dict_data.copy())
                 else:
-                    drilldown_series_dict['data'].append(['/Others', 100])
+                    drilldown_series_dict_data["name"] = "/Others"
+                    drilldown_series_dict_data["y"] = float(s['cat_count']) / float(p['cat_count']) * 100
+                    drilldown_series_dict_data["drilldown"] = None
 
-                drilldown_series_data.append(drilldown_series_dict.copy())
+                drilldown_series_dict["data"].append(drilldown_series_dict_data.copy())
 
+            drilldown_series_data.append(drilldown_series_dict.copy())
+
+        # To populate drilldown {} - second drilldown
+        for p in cat_pri_qs:
+            print("inside 3rd loop")
+            cat_sec_qs = ContentCategoryRev.objects.filter(category_pri=p['category_pri'],rid_id__in=rev_ids).values('category_sec').annotate(
+                cat_count=Count('category_sec'))
+            for s in cat_sec_qs:
+                drilldown_series_dict = dict()
+                if len(str(s['category_sec']).split('/')) == 3:
+                    drilldown_series_dict["name"] = s['category_sec']
+                    drilldown_series_dict["id"] = str(p['category_pri']).split('/')[1].lower() + '-' + str(s['category_sec']).split('/')[2].lower()
+                    drilldown_series_dict["data"] = []
+
+                    cat_ter_qs = ContentCategoryRev.objects.filter(category_pri=p['category_pri'],category_sec=s['category_sec'],
+                                                                   rid_id__in=rev_ids).values('category_ter').annotate(
+                                                                   cat_count=Count('category_ter'))
+                    if len(cat_ter_qs) > 0:
+                        for t in cat_ter_qs:
+                            if len(str(t['category_ter']).split('/')) == 4:
+                                drilldown_series_dict['data'].append(['/' + str(t['category_ter']).split('/')[3], float(t['cat_count'])/float(s['cat_count'])*100])
+                            else:
+                                drilldown_series_dict['data'].append(['/Others', float(t['cat_count']) / float(s['cat_count']) * 100])
+                    else:
+                        drilldown_series_dict['data'].append(['/Others', 100])
+
+                    drilldown_series_data.append(drilldown_series_dict.copy())
+    except:
+        print("Error while forming data for Category pie chart")
+        print(traceback.print_exc())
+    # df = pd.DataFrame()
+    # df['pCategory'] = kw
+    # df['series_data'] = series_data
+    # df['drilldown_series_data'] = drilldown_series_data
+    #
+    # df.to_csv(dbConfig.dict['dbfolderPath'] + "_" + kw.replace(" ", "-") + ".csv", header=True, index=False)
     # print("series_data", series_data)
-
-    # print("drilldown series data", drilldown_series_data)
-
+    print("drilldown series data", drilldown_series_data)
     return json.dumps([series_data, drilldown_series_data])
 
 

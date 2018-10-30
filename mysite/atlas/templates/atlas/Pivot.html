@@ -15,8 +15,9 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a id="summary" class="dropdown-item" href="/summary/">Summary</a>
                             <a id="clustering" class="dropdown-item" href="/clustering/">Result Clustering</a>
-                            <a id="pivot" class="dropdown-item" href="/pivot/">Data Exploration</a>
+                            <a id="pivot" class="dropdown-item" href="/pivot/">Pivot Table</a>
                             <a id="association" class="dropdown-item" href="/association/">Association Map</a>
+                            <a id="discover" class="dropdown-item" href="/discover/">Data Explorer</a>
                         </div>
                     </li>
                 {% endblock %}
@@ -127,6 +128,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.20.0/tips_data.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.20.0/export_renderers.min.js"></script>
     <script src="{% static 'atlas/script/url_utils.js' %}"></script>
+
+
+    <!--<script src="{% static 'atlas/script/clustering.js' %}" type="text/javascript" ></script>-->
     <script src="{% static 'atlas/script/pivotgrid.js' %}" type="text/javascript" ></script>
 
 {% endblock %}

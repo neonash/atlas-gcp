@@ -16,6 +16,7 @@
                             <a id="clustering" class="dropdown-item" href="/clustering/">Result Clustering</a>
                             <a id="pivot" class="dropdown-item" href="/pivot/">Data Exploration</a>
                             <a id="association" class="dropdown-item" href="/association/">Association Map</a>
+                            <a id="discover" class="dropdown-item" href="/discover/">Data Explorer</a>
                         </div>
                     </li>
                     {% endblock %}
@@ -73,7 +74,12 @@
 
 
 
-                        <div class="dropdown">
+                        <button class="btn btn-outline-primary" type="button" id="btnFullImport" >
+                            Refresh indexes
+                        </button>
+
+
+                        <div class="dropdown d-none">
                             <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
                                 Quick Links

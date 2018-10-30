@@ -17,6 +17,7 @@ $('#summary').attr('href', '/summary/?request='+ encodeURI(query));
 $('#clustering').attr('href', '/clustering/?request='+ encodeURI(query));
 $('#pivot').attr('href','/pivot/?request=' + encodeURI(query));
 $('#association').attr('href','/association/?request=' + encodeURI(query));
+$('#discover').attr('href','/discover/');
 
 //$('#comparison a').attr('href', '/compare/?request='+ encodeURI(query));
 
@@ -426,7 +427,7 @@ function load_brand1() {
                     data1 = data1 + '"' + value.pBrand + '":"' + value.pBrand + '",' ;
                }
            });
-
+            try{
             data1 = data1.replace(/.$/g,"}");
             data1 = data1.replace(/\n/g," ");
             data1 = "{" + data1;
@@ -460,7 +461,7 @@ function load_brand1() {
 
                   }
             });
-
+            }catch(err){}
             var $span_el = $('#brand1 li a span.text');
 //            console.log($span_el);
             $span_el.parent().parent().addClass('selected');
@@ -513,6 +514,7 @@ function load_source1(data1) {
 
                }
            });
+           try{
            data2 = data2.replace(/.$/g,"}");
             data2 = data2.replace(/\n/g," ");
             data2 = "{" + data2;
@@ -537,7 +539,8 @@ function load_source1(data1) {
                         load_all_charts();
                   }
               });
-
+            }
+            catch(err){}
             var $span_el = $('#source1 li a span.text');
 //            console.log($span_el);
             $span_el.parent().parent().addClass('selected');
@@ -588,11 +591,13 @@ function reload_source1(data1) {
 
                }
            });
+           try{
            data2 = data2.replace(/.$/g,"}");
             data2 = data2.replace(/\n/g," ");
             data2 = "{" + data2;
             data2 = JSON.parse(data2);
 //            console.log(data2);
+
 
             $('.multi2').multi_select({
                 //   selectColor: '#0077b5',
@@ -612,7 +617,7 @@ function reload_source1(data1) {
                         load_all_charts();
                   }
               });
-
+              }catch(err){}
             var $span_el = $('#source1 li a span.text');
 //            console.log($span_el);
             $span_el.parent().parent().addClass('selected');
@@ -666,7 +671,7 @@ function load_sku1(data1, data2) { //resp is source list in full name
            });
 //           $("#sku1").selectpicker("refresh");
 //           $('#sku1').selectpicker('selectAll');
-
+            try{
             data3 = data3.replace(/.$/g,"}");
             data3 = data3.replace(/\n/g," ");
             data3 = "{" + data3;
@@ -690,7 +695,7 @@ function load_sku1(data1, data2) { //resp is source list in full name
                         load_all_charts();
                   }
             });
-
+            }catch(err){}
             var $span_el = $('#sku1 li a span.text');
 //            console.log($span_el);
             $span_el.parent().parent().addClass('selected');
@@ -740,11 +745,12 @@ function reload_sku1(data1, data2) { //resp is source list in full name
            });
 //           $("#sku1").selectpicker("refresh");
 //           $('#sku1').selectpicker('selectAll');
-
+            try{
             data3 = data3.replace(/.$/g,"}");
             data3 = data3.replace(/\n/g," ");
             data3 = "{" + data3;
             data3 = JSON.parse(data3);
+
 //            console.log(data3);
 
             $('.multi3').multi_select({
@@ -762,7 +768,8 @@ function reload_sku1(data1, data2) { //resp is source list in full name
 //                    console.log('return values: ', values);
                   }
             });
-
+            }
+            catch(err){}
             var $span_el = $('#sku1 li a span.text');
 //            console.log($span_el);
             $span_el.parent().parent().addClass('selected');
@@ -2147,10 +2154,13 @@ function load_categ_chart() {
                // Create the chart
                 Highcharts.chart('categDonutChart', {
                     chart: {
-                        type: 'pie'
+                        type: 'pie',
+                        style: {
+                                fontFamily: 'Arial'
+                            }
                     },
                     title: {
-                        text: 'Primary Content Categories'
+                        text: 'Content Categories Distribution'
                     },
                     subtitle: {
                         text: 'Drill down to see secondary and tertiary categories'
@@ -2313,7 +2323,10 @@ function load_categ_chart() {
                // Create the chart
                 Highcharts.chart('categDonutChart', {
                     chart: {
-                        type: 'pie'
+                        type: 'pie',
+                        style: {
+                                fontFamily: 'Arial'
+                            }
                     },
                     title: {
                         text: 'Primary Content Categories'
@@ -2390,7 +2403,7 @@ $("#wc_data li").click(function(){
 
 function load_wordcloud() {
     if(flag1 == false){  //if '.csv' NOT present in query string
-        console.log("loading wordcloud");
+//        console.log("loading wordcloud");
 //          console.log(selStartDate,selEndDate);
         var brand = [];
         $('#brand1 .selected .text').each(function(index){
@@ -2419,7 +2432,7 @@ function load_wordcloud() {
            contentType: "application/json; charset=utf-8",
            dataType: "json",
            success: function (response) {
-               console.log(response);
+               //console.log(response);
 //               console.log(JSON.parse(response));
 
 //               var text = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean bibendum erat ac justo sollicitudin, quis lacinia ligula fringilla. Pellentesque hendrerit, nisi vitae posuere condimentum, lectus urna accumsan libero, rutrum commodo mi lacus pretium erat. Phasellus pretium ultrices mi sed semper. Praesent ut tristique magna. Donec nisl tellus, sagittis ut tempus sit amet, consectetur eget erat. Sed ornare gravida lacinia. Curabitur iaculis metus purus, eget pretium est laoreet ut. Quisque tristique augue ac eros malesuada, vitae facilisis mauris sollicitudin. Mauris ac molestie nulla, vitae facilisis quam. Curabitur placerat ornare sem, in mattis purus posuere eget. Praesent non condimentum odio. Nunc aliquet, odio nec auctor congue, sapien justo dictum massa, nec fermentum massa sapien non tellus. Praesent luctus eros et nunc pretium hendrerit. In consequat et eros nec interdum. Ut neque dui, maximus id elit ac, consequat pretium tellus. Nullam vel accumsan lorem.';
@@ -2446,10 +2459,13 @@ function load_wordcloud() {
                     series: [{
                         type: 'wordcloud',
                         data: response,
-                        name: 'Occurrences'
+                        name: 'Occurrences',
+                        style: {
+                                fontFamily: 'Arial'
+                            }
                     }],
                     title: {
-                        text: 'Wordcloud'
+                        text: 'Primary Content Categories'
                     }
                 });
 
@@ -2492,10 +2508,13 @@ function load_wordcloud() {
                     series: [{
                         type: 'wordcloud',
                         data: data,
-                        name: 'Occurrences'
+                        name: 'Occurrences',
+                        style: {
+                                fontFamily: 'Arial'
+                            }
                     }],
                     title: {
-                        text: 'Wordcloud of Lorem Ipsum'
+                        text: 'Primary Content Categories'
                     }
                 });
             }
@@ -2563,7 +2582,7 @@ function reload_wordcloud(data) {
                         name: 'Occurrences'
                     }],
                     title: {
-                        text: 'Wordcloud of Lorem Ipsum'
+                        text: 'Primary Content Categories'
                     }
                 });
 
@@ -2609,7 +2628,7 @@ function reload_wordcloud(data) {
                         name: 'Occurrences'
                     }],
                     title: {
-                        text: 'Wordcloud of Lorem Ipsum'
+                        text: 'Primary Content Categories'
                     }
                 });
             }

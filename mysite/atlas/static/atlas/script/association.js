@@ -11,6 +11,7 @@
     $('#clustering').attr('href','/clustering/?request=' + encodeURI(request));
     $('#pivot').attr('href','/pivot/?request=' + encodeURI(request));
     $('#association').attr('href','/association/?request=' + encodeURI(request));
+    $('#discover').attr('href','/discover/');
 
     is_first_load = true;
 

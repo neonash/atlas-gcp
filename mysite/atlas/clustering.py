@@ -29,3 +29,7 @@ def getUploadClusteringData(request):
     if "." in kw:
         kw = str(kw).split(".")[0]
     return HttpResponse((clustering_service.getUplClusteringData(kw, engine)), status=200)
+
+
+def getFullImport(request):
+    return HttpResponse((clustering_service.getFullImport()), status=200)

@@ -20,7 +20,8 @@ dict = dict(logUrl=r'./atlas/PyScripts/Outputs/Log/',
             logosPath=r'./atlas/static/atlas/images/icons/',
             sourcesUrl=r'./atlas/database/sourceMap.csv',
             dbfolderPath=r'./atlas/database/',
-            associationInput = r'./atlas/database/fashion_brands.csv',
-			spiderPath = r'./atlas/scrapers/scrapers/spiders/',
-            gcp_servicekey_path = r'./gcp-servicekey.json'
+            zepPath=r'./atlas/templates/atlas/Zeppelin.html',
+            associationInput=r'./atlas/database/fashion_brands.csv',
+            spiderPath=r'./atlas/scrapers/scrapers/spiders/',
+            gcp_servicekey_path=r'./gae-servicekey.json'
             )

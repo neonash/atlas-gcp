@@ -65,6 +65,7 @@ var request = window.urlUtils.getQueryParameter(window.location.href, 'request')
     $('#clustering').attr('href','/clustering/?request=' + encodeURI(request));
     $('#pivot').attr('href','/pivot/?request=' + encodeURI(request));
     $('#association').attr('href','/association/?request=' + encodeURI(request));
+    $('#discover').attr('href','/discover/');
 
     //var modal_closed_flag = false;
     //var last_response = null;
@@ -658,6 +659,22 @@ var request = window.urlUtils.getQueryParameter(window.location.href, 'request')
 
         }
     }
+
+    $('#btnFullImport').on('click', function(){
+          $.ajax({
+                type: "GET",
+                url: "/service/clustering_fullimport/",
+                data: {},
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    console.log("Full import done.");
+                },
+                failure: function (response) {
+                    alert("failed");
+                }
+            });
+    });
 
     $.get('/service/request/').then(function (successResponse) {
 

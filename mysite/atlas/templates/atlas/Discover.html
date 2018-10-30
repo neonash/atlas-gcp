@@ -1,9 +1,10 @@
 {% extends 'atlas/header.html' %}
 
-{% block title %}ATLAS | Brand Association{% endblock %}
+{% block title %}ATLAS | Data Explorer {% endblock %}
 
 {% load staticfiles %}
 {% csrf_token %}
+
 
 {% block analyses %}
                     <li class="dropdown">
@@ -24,6 +25,7 @@
 {% block content %}
 
 
+
     <div class="sub-header-wrapper">
         <div class="container-fluid">
             <div class="row">
@@ -31,7 +33,7 @@
                     <div class="sub-header">
 
                         <div>
-                            <label>Association Map</label>
+                            <label>Data Explorer</label>
 
                             <div class="guide">
                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
@@ -50,10 +52,9 @@
                                             </div>
                                             <div class="modal-body">
                                                 <ul>
-                                                    <li>This chart shows a graphical spider web of brand association with other
-                                                        dimensions as provided in the tagging dictionary.</li>
-                                                    <li>Hover over the data points to know how strongly the brand is associated
-                                                        with another dimension.</li>
+                                                    <li>This tab allows you to query the raw data directly.</li>
+                                                    <li>This tab leverages the Apache Zeppelin server that uses Spark engine for fast data processing.</li>
+                                                    <li>Zeppelin gives you the power of running customized queries and obtain quick visualizations.</li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -65,7 +66,7 @@
 
 
 
-                        <div class="dropdown">
+                        <div class="dropdown d-none">
                             <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true"
                                 aria-expanded="false">
                                 Quick Links
@@ -88,44 +89,19 @@
         <div class="row">
             <div class="col-12">
                 <div class="white-bg association-map-wrapper">
-                    <div>
-                        <ul>
-                            <li><small> If no chart is rendered, then please try changing the dimension in the filter. As the process
-                                of tagging a review to a dimension is based completely on the dictionary used, not every
-                                dimension will always have conversations tagged under it.</small></li>
-                            <li><small> Not every review/conversation will talk about a brand, hence there may be many conversations
-                                tagged to 'nan' (read as Not Applicable) for the brand dimension.</small></li>
-                            <li><small> For best results, use a custom dictionary as per the domain of the conversations in the datasets.</small></li>
-                        </ul>
-                    </div>
+                    <div>This is text
+                        <!--<div id="loading"><img src='{% static "atlas/images/icons/loading.gif"%}'></div>-->
+                        <!--<div id="output" class="d-none">-->
+                            <!--{ include zep %}-->
 
-                    <article>
-                        <div><label for="dropdownMenu3">Choose dimension: </label></div>
-                        <div class="dropdown" >
-                            <button class="btn btn-outline-primary dropdown-toggle" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true"
-                                aria-expanded="false" role="button">Select dimension</button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu3" id="dims">
-                                <li>Loading</li>
-                            </ul>
-                        </div>
-                    </article>
+                            <!--<iframe id='ifr' src="http://172.16.15.4:8080/#/notebook/2DTP82UXX">-->
+                              <!--<p>Your browser does not support iframes.</p>-->
+                            <!--</iframe>-->
 
-                    <div id="chartArea" style="display:none;">
-                        <div class ="row">
-                            <div class="col-lg-12 col-md-12" >
-                                        <div id="output" style="margin: 30px;"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="loading"><img src='{% static "atlas/images/icons/loading.gif"%}'></div>
-                     <div id="chartArea1" class="d-none">
-                         <div class ="row">
-                            <div class="col-lg-12 col-md-12" >
-                                <div id="chartjs-radar" >
-                                    <canvas id="myChart" ></canvas>
-                                </div>
-                            </div>
-                        </div>
+                            <a id="link-anchor" href="#"></a>
+
+                        <!--</div>-->
+
                     </div>
                 </div>
             </div>
@@ -134,14 +110,19 @@
 
     <footer>Powered by LatentView</footer>
 
+
 {% endblock %}
 {% block imports %}
+<!--<link type="text/css" rel="stylesheet" href="{% static 'atlas/styles/clustering.css' %}">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.20.0/pivot.min.css" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-	<script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
-	<script type="text/javascript" src="http://mpld3.github.io/js/mpld3.v0.2.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.20.0/pivot.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/4.3.7/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.20.0/gchart_renderers.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.20.0/tips_data.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pivottable/2.20.0/export_renderers.min.js"></script>
     <script src="{% static 'atlas/script/url_utils.js' %}"></script>
-    <!--<script src="{% static 'atlas/script/clustering.js' %}" type="text/javascript" ></script>-->
-    <script src="{% static 'atlas/script/association.js' %}" type="text/javascript" ></script>
+
+    <script src="{% static 'atlas/script/discover.js' %}" type="text/javascript" ></script>
 
 {% endblock %}

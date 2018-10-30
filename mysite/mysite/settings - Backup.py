@@ -17,6 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 os.environ['FOR_DISABLE_CONSOLE_CTRL_HANDLER'] = '1'
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.9/howto/deployment/checklist/
 
@@ -24,9 +25,10 @@ os.environ['FOR_DISABLE_CONSOLE_CTRL_HANDLER'] = '1'
 SECRET_KEY = 'dq62+-j*626!^owr15=l5@i_k-2kw6wl_zeu6xa3_&rg1)$8xi'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
+
 
 # Application definition
 
@@ -55,10 +57,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+APPEND_SLASH = True
+
 CORS_ORIGIN_ALLOW_ALL = True
 X_FRAME_OPTIONS = 'ALLOW'
-
-APPEND_SLASH = True
 
 ROOT_URLCONF = 'mysite.urls'
 
@@ -80,6 +82,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
+
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
@@ -100,6 +103,7 @@ DATABASES = {
     }
 }
 
+
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
 
@@ -118,6 +122,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 
@@ -131,10 +136,18 @@ USE_L10N = True
 
 USE_TZ = True
 
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 STATIC_ROOT = 'C:\\Users\\akshat.gupta\\PycharmProjects\\atlas - GCP\\mysite\\atlas\static'
+
+##### PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+##### STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
+#STATIC_URL = 'https://storage.googleapis.com/angelic-throne-203611.appspot.com/static/'
 STATIC_URL = 'https://storage.googleapis.com/lv-atlas.appspot.com/static/'
+
+# STATIC_URL = '/static/'
+
 
 CSRF_COOKIE_NAME = 'X-CSRFToken'
 

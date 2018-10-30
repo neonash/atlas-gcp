@@ -181,9 +181,9 @@ def main(request):
             rev_qs = Review.objects.filter(pid_id__pCategory=query1).values()
             tabl_name = "Review"
         else:
-            rev_qs = Uploads.objects.filter(pCategory=query1).values('rid')
+            rev_qs = Uploads.objects.filter(pCategory=query1).values('rid','rText')
             if len(rev_qs) == 0:
-                rev_qs = Social.objects.filter(dataset_filename=query1).values('rid')
+                rev_qs = Social.objects.filter(dataset_filename=query1).values('rid','rText')
                 tabl_name = "Social"
             else:
                 tabl_name = "Uploads"

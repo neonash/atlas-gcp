@@ -10,6 +10,7 @@
     $('#clustering').attr('href','/clustering/?request=' + encodeURI(request));
     $('#pivot').attr('href','/pivot/?request=' + encodeURI(request));
     $('#association').attr('href','/association/?request=' + encodeURI(request));
+    $('#discover').attr('href','/discover/');
 
     google.load("visualization", "1", {packages:["corechart", "charteditor"]});
     $(function(){
